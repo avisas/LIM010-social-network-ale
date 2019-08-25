@@ -4,9 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <title>Social Network</title>
 </head>
 <body>
+    <div class="login">
+        <form id="form-register" class="flex-form">
+          <img src="img/logo.png" class="img-logo" alt="Logo meet and code">
+          <p class="slogan-coders">¡Bienvenido a <strong>Meet and Code</strong>, la red de coders en acción!</p>
+          <input type="text" name="nickname" placeholder="Nickname" class="inputForm" id="nick">
+          <input type="text" name="mail" placeholder="Email" class="inputForm" id="mail">
+          <input type="password" name="pass" placeholder="Password" class="inputForm" id="pass">
+          <input type="submit" class="button-login" id="button-register" value="Register">
+          <label id="registerMessageError"></label>
+        </form>
+        <p>¿Ya tienes una cuenta?&nbsp;<a href="#/"><span id="" class="register-href">Ingresa</span></a></p>
+      </div>
   <script type="module" src="main.js"></script>
 </body>
 </html>

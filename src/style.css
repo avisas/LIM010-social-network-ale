@@ -1,1 +1,157 @@
 @import url('https://fonts.googleapis.com/css?family=Patua+One|Ubuntu&display=swap');
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  text-decoration: none;
+  list-style-type: none;
+  box-sizing: border-box;
+  outline: none;
+  user-select: none;
+}
+
+main{
+  padding:20px;
+}
+body{
+  margin: 0px;
+}
+.flex {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 20px;
+}
+
+.section-image{
+  display: none;
+}
+
+.slogan-coders{
+  margin-top: 0px;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  color: #666666;
+}
+p{
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  color: #666666;
+}
+
+
+/* .image-login{
+  width: 220px;
+  height: 160px;
+} */
+
+.inputForm {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 70%;
+  position: relative;
+}
+
+.eye-class{
+  width: 20px;
+  position: absolute;
+  height: 20px;
+  right: 20px;
+  top: 15px;
+}
+
+.button-login{
+  font-family: 'Patua One', cursive;
+  background-color: #de5f5f;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 60%;
+  font-size: 18px;
+  outline: none;
+}
+
+.button-login:hover{
+  color: #eade70;
+  background-color: rgb(0, 155, 211);
+}
+
+.social-icon {
+  margin-top: 15px;
+  margin-bottom: 15px;
+} 
+
+.icon-fb {
+  color: #3b5998;
+  font-size: 45px;
+}
+.icon-google{
+  color:#db4a39;
+  font-size: 45px;
+}
+
+.register-href{
+  font-weight: bold;
+  color: #008fd3;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+@media screen and (min-width: 764px) {
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+main {
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.flex-form {
+  display: flex;
+  width: 25vw;
+}
+
+.section-image {
+  background-image: url(./img/cofeeForm.jpg);
+  height: 100vh;
+  width: 60%;
+  display: block;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+}
+
+.inputForm1{
+  border: none;
+  outline: none;
+ } 
+}

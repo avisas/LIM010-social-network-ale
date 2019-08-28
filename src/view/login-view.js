@@ -1,4 +1,4 @@
-export default () => {
+export const login = () => {
   const formLogin = document.createElement('div');
   formLogin.className = 'container-login';
   const divLogin = `
@@ -30,15 +30,15 @@ export default () => {
   </div>
 `;
 formLogin.innerHTML = divLogin;
-
+/*
 const loginAuthentication = formLogin.querySelector('#login-authentication');
 const loginFacebook = formLogin.querySelector('#facebook');
 const loginGoogle = formLogin.querySelector('#google');
 const showEye = formLogin.querySelector('#show-eye');
 
-loginAuthentication.addEventListener('submit', loginFunction);
+loginAuthentication.addEventListener('submit', () => {loginFunction()});
 loginFacebook.addEventListener('click', signInFacebook);
 loginGoogle.addEventListener('click', signInGoogle);
-showEye.addEventListener('click', showPassword);
+showEye.addEventListener('click', showPassword);*/
 return formLogin;
 };

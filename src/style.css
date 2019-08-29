@@ -102,10 +102,12 @@ p{
 } 
 
 .icon-fb {
+  cursor: pointer;
   color: #3b5998;
   font-size: 45px;
 }
 .icon-google{
+  cursor: pointer;
   color:#db4a39;
   font-size: 45px;
 }
@@ -113,6 +115,12 @@ p{
 .register-href{
   font-weight: bold;
   color: #008fd3;
+}
+
+.show-message-error {
+  display: inline-block;
+  color: #db4a39;
+  font-weight: bold;
 }
 
 .hide {

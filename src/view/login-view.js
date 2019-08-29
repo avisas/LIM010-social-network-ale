@@ -1,7 +1,9 @@
-export const login = () => {
+import { loginFunction } from '../controller/login-controller.js';
+
+export const loginUser = () => {
   const formLogin = document.createElement('div');
   formLogin.className = 'container-login';
-  const divLogin = `
+  const loginContent = `
 <div class="section-image flex">
   </div>
   <div class="login">
@@ -29,16 +31,16 @@ export const login = () => {
     </div>
   </div>
 `;
-formLogin.innerHTML = divLogin;
-/*
-const loginAuthentication = formLogin.querySelector('#login-authentication');
-const loginFacebook = formLogin.querySelector('#facebook');
-const loginGoogle = formLogin.querySelector('#google');
-const showEye = formLogin.querySelector('#show-eye');
+  formLogin.innerHTML = loginContent;
 
-loginAuthentication.addEventListener('submit', () => {loginFunction()});
-loginFacebook.addEventListener('click', signInFacebook);
-loginGoogle.addEventListener('click', signInGoogle);
-showEye.addEventListener('click', showPassword);*/
-return formLogin;
+  const loginAuthentication = formLogin.querySelector('#login-authentication');
+  const loginFacebook = formLogin.querySelector('#facebook');
+  const loginGoogle = formLogin.querySelector('#google');
+  const showEye = formLogin.querySelector('#show-eye');
+
+  loginAuthentication.addEventListener('submit', () => { loginFunction() });
+  // loginFacebook.addEventListener('click', signInFacebook);
+  // loginGoogle.addEventListener('click', signInGoogle);
+  // showEye.addEventListener('click', showPassword);
+  return formLogin;
 };

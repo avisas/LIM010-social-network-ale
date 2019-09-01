@@ -1,6 +1,7 @@
 // Este es el punto de entrada de tu aplicacion
-import { myFunction } from './lib/index.js';
-myFunction();
+// import { loginUser } from '../view/login-view.js';
+
+// loginUser();
 
 import { changeView } from '../src/controller-route/route.js';
 
@@ -17,9 +18,7 @@ const firebaseConfig = {
 //  Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-const init = () => {
-  changeView(window.location.hash);
-  window.addEventListener('hashchange', () => changeView(window.location.hash));
-};
+window.addEventListener('hashchange', changeView(window.location.hash));
+window.addEventListener('load', changeView(window.location.hash));
 
-window.addEventListener('load', init);
+changeView(window.location.hash);

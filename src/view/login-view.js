@@ -4,12 +4,12 @@ export const loginUser = () => {
   const formLogin = document.createElement('div');
   formLogin.className = 'container-login';
   const loginContent = `
-<div class="section-image flex">
+  <div class="section-image flex">
   </div>
   <div class="login">
     <form id="login-authentication" class="flex-form">
-      <!-- <img src=" " class="image-login" alt="logo del login-authentication"> -->
-      <p class="slogan-coders">¡Bienvenido a <strong>Wakanda!</strong></p>
+      <!-- <img src="./src/img/bear café (2).jpg" class="image-login" alt="logo-login-auth"> -->
+      <p class="slogan-coders">¡Bienvenido a <strong>Wakanda Café!</strong></p>
       <div class="inputForm">
         <input type="text" name="email" value="" placeholder="Email" class="inputForm1" id="email">
       </div>
@@ -17,7 +17,7 @@ export const loginUser = () => {
         <input type="password" name="password" value="" placeholder="Password" class="inputForm1" id="password">
         <span id="show-eye" class="eye-class"><i class="far fa-eye"></i></span>
       </div>
-      <input type="submit" name="" class="button-login" value="Log In">
+      <input type="submit" id="login-auth" class="button-login" value="Log In">
       <label id="LoginMessageError"></label>
     </form>
     <div class="flex-form">

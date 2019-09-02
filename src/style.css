@@ -11,12 +11,61 @@
   user-select: none;
 }
 
+h2 {
+  font-size: 23px;
+  font-family: ubuntu;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10%;
+  background-color: #d8de5f;
+  font-family: "Ubuntu";
+}
+
 main{
   padding:20px;
 }
 body{
   margin: 0px;
 }
+
+header nav ul {
+  list-style-type: none;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background-color: #4994e8;
+  height: 25vh;
+}
+header nav ul li {
+  display: inline-block;
+  /* padding: 0px 20px; */
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #ffffff4a;
+}
+
+header nav ul li a {
+  transition: all 0.3s ease 0s;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  padding: 10px;
+}
+
+ul li a:hover {
+  color: #f1f1f1;
+  background-color: #abb159b3;
+}
+
+header nav ul li span {
+  margin-right: 10px;
+}
+
 .container-login {
   display: inline-flex;
   height: 100vh;
@@ -122,6 +171,47 @@ p{
   font-weight: bold;
 }
 
+.div-post {
+  height: auto;
+  border: 2px solid #009fc6;
+  border-radius: 5px;
+  margin: 2%;
+  font-family: "Ubuntu";
+}
+.textarea-post {
+  width: -webkit-fill-available;
+  height: 100px;
+  resize: none;
+  border: 1px solid #a9a9a9;
+  padding: 7px 20px 7px 20px;
+}
+
+.btn-select {
+  align-self: start;
+  margin-top: 3px;
+  border-top-style: inset;
+  background-color: #0563af;
+  color: white;
+  padding: 7px;
+  border-radius: 20px;
+}
+
+.btn-select select option {
+  padding: 30px;
+}
+.btn-share {
+  font-family: "Patua One", cursive;
+  background-color: #fa5457;
+  color: white;
+  padding: 10px 20px;
+  /* margin: 8px 0; */
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  align-self: flex-end;
+}
+
 .hide {
   display: none;
 }
@@ -141,6 +231,31 @@ main {
   margin-right: 10%;
   display: flex;
   justify-content: space-evenly;
+}
+
+h2 {
+  font-size: 35px;
+  text-align: center;
+}
+
+header nav ul {
+  list-style-type: none;
+  position: initial;
+  right: 0;
+  top: 0;
+  background-color: #c1cddb08;
+  height: initial;
+}
+
+header nav ul li {
+  /* padding: 0px 20px; */
+  width: initial;
+  text-align: center;
+  border-bottom: none;
+}
+
+.list-menu {
+  display: flex !important;
 }
 
 .flex-form {

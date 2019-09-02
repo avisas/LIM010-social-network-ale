@@ -9,7 +9,7 @@ export const registerUser = () => {
 <div class="login">
   <form id="form-register" class="flex-form">
   <!-- <img src="./src/img/bear café (2).jpg" class="image-login" alt="Logo eco café"> -->
-    <p class="slogan-coders">¡Bienvenido a <strong>Wakanda!</strong></p>
+    <p class="slogan-coders">¡Bienvenido a <strong>Wakanda Café!</strong></p>
     <input type="text" name="nickname" placeholder="Usuario" class="inputForm" id="nick">
     <input type="text" name="mail" placeholder="Email" class="inputForm" id="mail">
     <input type="password" name="pass" placeholder="Password" class="inputForm" id="pass">
@@ -22,7 +22,7 @@ export const registerUser = () => {
   formRegister.innerHTML = registerContent;
 
   const btnRegister = formRegister.querySelector('#button-register');
-  btnRegister.addEventListener('click', () => { registerFunction() });
+  btnRegister.addEventListener('click', (event) => { registerFunction(event) });
 
   return formRegister;
 };

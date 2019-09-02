@@ -18,7 +18,11 @@ const firebaseConfig = {
 //  Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-window.addEventListener('hashchange', changeView(window.location.hash));
-window.addEventListener('load', changeView(window.location.hash));
+export const dataBase = firebase.firestore();
 
-changeView(window.location.hash);
+const init = () => {
+  changeView(window.location.hash);
+  window.addEventListener('hashchange', () => changeView(window.location.hash));
+};
+
+window.addEventListener('load', init);

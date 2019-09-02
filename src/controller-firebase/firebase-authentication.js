@@ -4,3 +4,13 @@ export const createUser = (email, password) => firebase.auth().createUserWithEma
 export const userCurrent = () => firebase.auth().currentUser;
 
 export const signIn = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
+
+export const signInWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    return firebase.auth().signInWithPopup(provider);
+};
+
+export const signInWithFacebook = () => {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    return firebase.auth().signInWithPopup(provider);
+};

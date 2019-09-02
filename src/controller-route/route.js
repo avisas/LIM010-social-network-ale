@@ -10,7 +10,7 @@ export const changeView = (route) => {
       break;
     case '#/register': container.appendChild(components.registerUser());
       break;
-    case '#/home':
+    case '#/header': container.appendChild(components.header());
       document.write('Ingresaste al home');
       container.innerHTML = '';
       break;

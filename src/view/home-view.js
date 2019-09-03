@@ -18,9 +18,9 @@ export const homeView = () => {
 <main>
   <div id="form-save" class="div-post">
     <form id="form-publication" class="" maxlength=50 required>
-      <textarea id="publication" placeholder="¿Que quieres compartir?" class="textarea-post"></textarea>
+      <textarea id="text-area-post" placeholder="¿Que quieres compartir?" class="textarea-post"></textarea>
       <div class="">
-        <select id="privacidad" class="btn-select" name="select">
+        <select id="privacy" class="btn-select" name="select">
           <option value="publico" selected>Público</option>
           <option value="privado">Privado</option>
         </select>

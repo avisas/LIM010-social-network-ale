@@ -23,8 +23,8 @@ export const loginUser = () => {
     <div class="flex-form">
       <p>O bien ingresa con...</p>
       <div class="social-icon">
-        <span id="facebook"><i class="fab fa-facebook icon-fb"></i></span>
-        <span id="google"><i class="fab fa-google icon-google"></i></span>
+        <span id="facebook" class="icon-fb"><i class="fab fa-facebook"></i></span>
+        <span id="google" class="icon-google"><i class="fab fa-google"></i></span>
       </div>
       <p>¿No tienes una cuenta?&nbsp;<a href="#/register"><span id="register"
             class="register-href">Regístrate</span></a></p>

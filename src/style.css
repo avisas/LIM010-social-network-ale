@@ -32,6 +32,9 @@ body{
   margin: 0px;
 }
 
+.login {
+  margin: auto;
+}
 header nav ul {
   list-style-type: none;
   position: absolute;
@@ -173,16 +176,19 @@ p{
 
 .div-post {
   height: auto;
-  border: 2px solid #009fc6;
+  width: 50%;
+  min-width: 300px;
+  padding: 10px;
+  border: 2px solid #abb159;
   border-radius: 5px;
-  margin: 2%;
+  margin: auto;
   font-family: "Ubuntu";
 }
 .textarea-post {
   width: -webkit-fill-available;
   height: 100px;
   resize: none;
-  border: 1px solid #a9a9a9;
+  border: 1px solid #79795a;
   padding: 7px 20px 7px 20px;
 }
 
@@ -278,6 +284,10 @@ header nav ul li {
   align-items: center;
   justify-content: center;
   width: 40%;
+}
+
+.hamb-menu{
+  display: none;
 }
 
 .inputForm1{

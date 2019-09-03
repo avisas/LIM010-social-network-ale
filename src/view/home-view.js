@@ -6,7 +6,7 @@ export const homeView = () => {
   <header>
   <h2>Wakanda Café</h2>
   <nav class="flex">
-    <a id="hamb-menu" class=""><span class="icon-menu"></span></a>
+    <a id="hamb-menu" class="hamb-menu"><span class="icon-menu"></span></a>
     <ul id="show-hamb" class="hide list-menu">
       <li><a id="user-name"><span class="icon-user">User</a></li>
       <li><a id="home-pag"><span class="icon-home2"></span>Home</a></li>

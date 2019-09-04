@@ -8,7 +8,7 @@ export const homeView = () => {
   <nav class="flex">
     <a id="hamb-menu" class="hamb-menu"><span class="icon-menu"></span></a>
     <ul id="show-hamb" class="hide list-menu">
-      <li><a id="user-name"><span class="icon-user">User</a></li>
+      <li><a id="user-name"><span class="icon-user"></span>User</a></li>
       <li><a id="home-pag"><span class="icon-home2"></span>Home</a></li>
       <li><a id="setting"><span class="icon-info"></span>Setting</a></li>
       <li><a id="sign-out"><span class="icon-exit"></span>Log Out</a></li>
@@ -19,7 +19,7 @@ export const homeView = () => {
   <div id="form-save" class="div-post">
     <form id="form-publication" class="" maxlength=50 required>
       <textarea id="text-area-post" placeholder="¿Que quieres compartir?" class="textarea-post"></textarea>
-      <div class="">
+      <div class="flex">
         <select id="privacy" class="btn-select" name="select">
           <option value="publico" selected>Público</option>
           <option value="privado">Privado</option>

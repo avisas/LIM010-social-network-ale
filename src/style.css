@@ -13,7 +13,7 @@
 
 h2 {
   font-size: 23px;
-  font-family: ubuntu;
+  font-family: 'Courgette', cursive;
 }
 
 header {
@@ -21,7 +21,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 10%;
-  background-color: #d8de5f;
+  background-color: #E8443F;
   font-family: "Ubuntu";
 }
 
@@ -40,8 +40,8 @@ header nav ul {
   position: absolute;
   right: 0;
   top: 45px;
-  background-color: #4994e8;
-  height: 25vh;
+  background-color: #a67a60;
+    height: 80vh;
 }
 header nav ul li {
   display: inline-block;
@@ -52,8 +52,9 @@ header nav ul li {
 }
 
 header nav ul li a {
+  font-family: 'Delius', cursive;
   transition: all 0.3s ease 0s;
-  color: rgb(255, 255, 255);
+  color: #292222;
   text-decoration: none;
   cursor: pointer;
   display: block;
@@ -61,8 +62,8 @@ header nav ul li a {
 }
 
 ul li a:hover {
-  color: #f1f1f1;
-  background-color: #abb159b3;
+  color: snow;
+  background-color: #D6B9A4;
 }
 
 header nav ul li span {
@@ -143,8 +144,8 @@ p{
 }
 
 .button-login:hover{
-  color: #eade70;
-  background-color: rgb(0, 155, 211);
+  color: #dab701;    
+  background-color: #A67A60;
 }
 
 .social-icon {
@@ -165,13 +166,16 @@ p{
 
 .register-href{
   font-weight: bold;
-  color: #008fd3;
+  color: #dab701;
 }
 
 .show-message-error {
   display: inline-block;
   color: #db4a39;
   font-weight: bold;
+  font-style: oblique;
+  font-size: 18px;
+  padding: 8px;
 }
 
 .div-post {
@@ -193,20 +197,23 @@ p{
 }
 
 .btn-select {
+  font-family: 'Delius', cursive;
+  font-size: 13px;
   align-self: start;
   margin-top: 3px;
   border-top-style: inset;
-  background-color: #0563af;
+  background-color: #c7b045;
   color: white;
   padding: 7px;
   border-radius: 20px;
+  cursor: pointer;
 }
 
 .btn-select select option {
   padding: 30px;
 }
 .btn-share {
-  font-family: "Patua One", cursive;
+  font-family: 'Delius', cursive;
   background-color: #fa5457;
   color: white;
   padding: 10px 20px;

@@ -21,7 +21,7 @@ export const loginFunction = (event) => {
           messageErrorLabel.innerHTML = 'Usuario no vinculado a esta cuenta';
           break;
         case 'auth/wrong-password':
-          messageErrorLabel.innerHTML = 'Contraseña incorrecta';
+          messageErrorLabel.innerHTML = '¡Contraseña incorrecta!';
           break;
         case 'auth/invalid-email':
           messageErrorLabel.innerHTML = 'No se ingresó ningún correo electrónico';

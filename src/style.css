@@ -183,17 +183,20 @@ p{
   width: 50%;
   min-width: 300px;
   padding: 10px;
-  border: 2px solid #abb159;
+  border: 2px solid #9e7862;
   border-radius: 5px;
   margin: auto;
   font-family: "Ubuntu";
 }
+
 .textarea-post {
   width: -webkit-fill-available;
   height: 100px;
   resize: none;
-  border: 1px solid #79795a;
+  border: 1px solid #9e7862;
+  border-radius: 5px;
   padding: 7px 20px 7px 20px;
+  
 }
 
 .btn-select {

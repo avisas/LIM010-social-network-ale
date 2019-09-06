@@ -11,7 +11,7 @@ const firebaseConfig = {
   authDomain: "social-network-da9bb.firebaseapp.com",
   databaseURL: "https://social-network-da9bb.firebaseio.com",
   projectId: "social-network-da9bb",
-  storageBucket: "",
+  storageBucket: "social-network-da9bb.appspot.com",
   messagingSenderId: "127105401953",
   appId: "1:127105401953:web:ee4714d5b170bbe4"
 };

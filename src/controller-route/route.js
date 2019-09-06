@@ -11,9 +11,9 @@ export const changeView = (route) => {
     case '#/register': container.appendChild(components.registerUser());
       break;
     case '#/home': container.appendChild(components.homeView());
-      // document.write('Ingresaste al home');
-      // container.innerHTML = '';
       break;
+    // case '#/profile': container.appendChild(components.profile());
+    //   break; 
     default: break;
   }
 };

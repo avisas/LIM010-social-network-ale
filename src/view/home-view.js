@@ -1,6 +1,8 @@
 import { signOutUser } from '../controller/home-controller.js';
+import { savePost } from '../controller/post-controller.js';
+import { postList } from '../view/post-view.js';
 
-export const homeView = () => {
+export const homeView = (pubs) => {
   const homeDiv = document.createElement('div');
   const homeContent = `
   <header>
@@ -24,25 +26,33 @@ export const homeView = () => {
           <option value="publico" selected>Público</option>
           <option value="privado">Privado</option>
         </select>
-        <input type="button" id="compartir-post" class="btn-share" value="Compartir">
+        <input type="button" id="share-post" class="btn-share" value="Compartir">
       </div>
     </form>
   </div>
 
   <section>
-    <ul id="notes-list" class="ul-parent"></ul>
+    <ul id="post-list" class="ul-parent"></ul>
   </section>
 </main>
   `;
-homeDiv.innerHTML = homeContent;
+  homeDiv.innerHTML = homeContent;
 
-const btnSignOut = homeDiv.querySelector('#sign-out');
-btnSignOut.addEventListener('click', () => {signOutUser() });
+  const ulPost = homeDiv.querySelector('#post-list');
+  pubs.forEach((note) => {
+    ulPost.appendChild(postList(note));
+  });
+
+  const btnSignOut = homeDiv.querySelector('#sign-out');
+  btnSignOut.addEventListener('click', () => { signOutUser() });
+
+  const btnSharePost = homeDiv.querySelector('#share-post');
+  btnSharePost.addEventListener('click', (event) => { savePost(event) });
 
 
-const HambMenu = homeDiv.querySelector('#hamb-menu');
-const showHamb = homeDiv.querySelector('#show-hamb');
-let modoMenu = 0;
+  const HambMenu = homeDiv.querySelector('#hamb-menu');
+  const showHamb = homeDiv.querySelector('#show-hamb');
+  let modoMenu = 0;
 
   HambMenu.addEventListener('click', () => {
     if (modoMenu === 0) {

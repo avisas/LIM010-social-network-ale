@@ -49,7 +49,6 @@ export const homeView = () => {
   console.log(user);
   const userId = user.uid;
   const pubs = getUserAndPublicPosts(userId); // [{}, {}, {}, ...]
-  //pubs = getPosts(['AlejaId', 'RonnyID'], ['public', 'private']);
 
   const ulPost = homeDiv.querySelector('#post-list');
   let index = 1;

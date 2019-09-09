@@ -1,11 +1,6 @@
 export const createUser = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password);
 
-export const userCurrent = () => {
-    console.log('userCurrent inicio: ');
-    let user = firebase.auth().currentUser;
-    console.log('userCurrent fin: '+ user);
-    return user;
-}
+export const userCurrent = () => firebase.auth().currentUser;
 
 export const signIn = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
 

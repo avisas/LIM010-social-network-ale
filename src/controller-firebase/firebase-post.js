@@ -36,12 +36,15 @@ firebase.firestore().collection('posts').doc(id).update({
 
 export const getUserAndPublicPosts = (userId) => {
   const listOfPubs = [];
-  firebase.firestore().collection('post').where('privacidad', '==', 'publico').where(user, '==', userId).orderBy('timePost', 'desc')
+  console.log('El UserId es: ' + userId);
+  console.log(posts);
+  firebase.firestore().collection('posts').where('privacy', '==', 'publico').where('userID', '==', userId).orderBy('timePost', 'desc')
   .onSnapshot((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       listOfPubs.push({ id: doc.id, ...doc.data() });
     });
   });
-
+  console.log(listOfPubs);
   return listOfPubs;
+  
 };

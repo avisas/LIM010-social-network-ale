@@ -2,6 +2,7 @@ import { signOutUser } from '../controller/home-controller.js';
 import { savePost } from '../controller/post-controller.js';
 import { postList } from '../view/post-view.js';
 import { getUserAndPublicPosts } from '../controller-firebase/firebase-post.js';
+import { userCurrent } from '../controller-firebase/firebase-authentication.js';
 
 export const homeView = () => {
   const homeDiv = document.createElement('div');
@@ -44,6 +45,8 @@ export const homeView = () => {
   `;
   homeDiv.innerHTML = homeContent;
 
+  const user = userCurrent();
+  console.log(user);
   const userId = user.uid;
   const pubs = getUserAndPublicPosts(userId); // [{}, {}, {}, ...]
   //pubs = getPosts(['AlejaId', 'RonnyID'], ['public', 'private']);

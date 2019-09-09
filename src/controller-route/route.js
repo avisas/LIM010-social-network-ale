@@ -12,8 +12,8 @@ export const changeView = (route) => {
       break;
     case '#/home': container.appendChild(components.homeView());
       break;
-    // case '#/profile': container.appendChild(components.profile());
-    //   break; 
+    case '#/profile': container.appendChild(components.profileView());
+      break; 
     default: break;
   }
 };

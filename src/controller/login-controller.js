@@ -12,6 +12,7 @@ export const loginFunction = (event) => {
       messageErrorLabel.innerHTML = '';
       window.location.hash = '#/home';
       const user = userCurrent();
+      console.log('user');
       updateDisplayName(user.displayName); 
     })
     .catch((error) => {

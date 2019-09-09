@@ -1,6 +1,5 @@
 
-
-export const postList = () => {
+export const postList = (note) => {
     const liElement = document.createElement('li');
     liElement.classList.add('li-child');
     liElement.innerHTML = `
@@ -16,7 +15,7 @@ export const postList = () => {
       </div>
       <p class="date-publication">Fecha de publicación</p>
     </div>
-    <span class="btn-delete"><i class="fas fa-trash-alt"></i><span>
+    <span class="btn-delete"><i class="fas fa-trash-alt"></i></span>
   </div>
   <div class="middle-post">
     <div class="textarea no-border" id="text" contentEditable="false"></div>
@@ -34,7 +33,7 @@ export const postList = () => {
     <span class="margin-left hide" id="save-post" data-note="" data-privacidad=""><i
         class="fa fa-floppy-o iconSave"></i></span>
     <span class="margin-left hide" id="edit" data-note="" data-privacidad=""><i
-        class="fa fa-pencil-square-o iconEdit"></i><span>
+        class="fa fa-pencil-square-o iconEdit"></i></span>
   </div>
   <div id="comments-section" class="hide">
     <form id="form-publication" maxlength=50 class="form-comment" required>
@@ -45,7 +44,6 @@ export const postList = () => {
   </div>
 </div>
     `;
-
     
     return liElement;
 };

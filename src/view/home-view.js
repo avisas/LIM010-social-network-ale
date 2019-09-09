@@ -1,8 +1,9 @@
 import { signOutUser } from '../controller/home-controller.js';
 import { savePost } from '../controller/post-controller.js';
 import { postList } from '../view/post-view.js';
+import { getUserAndPublicPosts } from '../controller-firebase/firebase-post.js';
 
-export const homeView = (pubs) => {
+export const homeView = () => {
   const homeDiv = document.createElement('div');
   const homeContent = `
   <header>
@@ -22,6 +23,11 @@ export const homeView = (pubs) => {
     <form id="form-publication" class="" maxlength=50 required>
       <textarea id="text-area-post" placeholder="¿Que quieres compartir?" class="textarea-post"></textarea>
       <div class="flex">
+        <div>
+          <label for="fileButton" id="image" class="btn-picture"><i class="far fa-images"></i></label>
+          <input type="text" class="file-name" id="inputval" />
+          <input type="file" class="hide" name="file" value="upload" id="fileButton" />
+        </div>
         <select id="privacy" class="btn-select" name="select">
           <option value="publico" selected>Público</option>
           <option value="privado">Privado</option>
@@ -38,9 +44,18 @@ export const homeView = (pubs) => {
   `;
   homeDiv.innerHTML = homeContent;
 
+  const userId = user.uid;
+  const pubs = getUserAndPublicPosts(userId); // [{}, {}, {}, ...]
+  //pubs = getPosts(['AlejaId', 'RonnyID'], ['public', 'private']);
+
   const ulPost = homeDiv.querySelector('#post-list');
+  let index = 1;
   pubs.forEach((note) => {
-    ulPost.appendChild(postList(note));
+    console.log(`List of Notes: ${index}. ${note}`);
+    index++;
+    let ans = postList(note);
+    console.log(ans);
+    ulPost.appendChild(ans);
   });
 
   const btnSignOut = homeDiv.querySelector('#sign-out');

@@ -1,4 +1,4 @@
-export const datePost = () => {
+export const postDate = () => {
   const opt1 = {
     month: 'short', day: 'numeric', year: 'numeric',
   };
@@ -17,7 +17,7 @@ export const addPostFirebase = (notePost, selectPrivacy, userUid, userDisplayNam
     privacy: selectPrivacy,
     userID: userUid,
     username: userDisplayName,
-    timePost: datePost(),
+    timePost: postDate(),
     img: imgUrl,
   });
 };
@@ -30,7 +30,18 @@ export const editPostFirebase = (id, note, selectedPrivacy) => {
 firebase.firestore().collection('posts').doc(id).update({
   publication: note,
   privacy: selectedPrivacy,
-  timePost: datePost(),
+  timePost: postDate(),
 });
 };
 
+export const getUserAndPublicPosts = (userId) => {
+  const listOfPubs = [];
+  firebase.firestore().collection('post').where('privacidad', '==', 'publico').where(user, '==', userId).orderBy('timePost', 'desc')
+  .onSnapshot((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      listOfPubs.push({ id: doc.id, ...doc.data() });
+    });
+  });
+
+  return listOfPubs;
+};

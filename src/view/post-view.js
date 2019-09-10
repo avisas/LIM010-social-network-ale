@@ -7,13 +7,13 @@ export const postList = (note) => {
   <div class="user-publicated flex-name-post">
     <div class="only-flex">
       <div>
-        <p> Username </p>
+        <p> Publicado por: ${note.username} </p>
         <select id="select-privacy" class="btn-select" name="select" disabled>
           <option value="privado" selected>Privado</option>
           <option value="público">Público</option>
         </select>
       </div>
-      <p class="date-publication">Fecha de publicación</p>
+      <p class="date-publication">${note.timePost}</p>
     </div>
     <span class="btn-delete"><i class="fas fa-trash-alt"></i></span>
   </div>

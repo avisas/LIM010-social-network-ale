@@ -4,7 +4,7 @@ import { postList } from '../view/post-view.js';
 import { getUserAndPublicPosts } from '../controller-firebase/firebase-post.js';
 import { userCurrent } from '../controller-firebase/firebase-authentication.js';
 
-export const homeView = () => {
+export const homeView = (pubs) => {
   const homeDiv = document.createElement('div');
   const homeContent = `
   <header>
@@ -45,15 +45,11 @@ export const homeView = () => {
   `;
   homeDiv.innerHTML = homeContent;
 
-  const user = userCurrent();
-  console.log(user);
-  const userId = user.uid;
-  const pubs = getUserAndPublicPosts(userId); // [{}, {}, {}, ...]
-
   const ulPost = homeDiv.querySelector('#post-list');
   let index = 1;
   pubs.forEach((note) => {
     console.log(`List of Notes: ${index}. ${note}`);
+    console.log(note);
     index++;
     let ans = postList(note);
     console.log(ans);

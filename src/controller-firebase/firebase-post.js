@@ -35,7 +35,6 @@ firebase.firestore().collection('posts').doc(id).update({
 };
 
 export const getUserAndPublicPosts = (userId, callback) => {
-  console.log('Dentro de getuser, el UserId es: ' + userId);
   firebase.firestore().collection('posts').where('privacy', '==', 'publico').where('userID', '==', userId).orderBy('timePost', 'desc')
   .onSnapshot((querySnapshot) => {
     const listOfPubs = [];

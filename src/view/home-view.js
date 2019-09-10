@@ -23,10 +23,10 @@ export const homeView = (pubs) => {
   <div id="form-save" class="div-post">
     <form id="form-publication" class="" maxlength=50 required>
       <textarea id="text-area-post" placeholder="¿Que quieres compartir?" class="textarea-post"></textarea>
-      <div class="flex">
+      <div class="flex-bottom-form">
         <div>
           <label for="fileButton" id="image" class="btn-picture"><i class="far fa-images"></i></label>
-          <input type="text" class="file-name" id="inputval" />
+          <input type="text" class="file-name" id="input-file-name"/>
           <input type="file" class="hide" name="file" value="upload" id="fileButton" />
         </div>
         <select id="privacy" class="btn-select" name="select">
@@ -46,13 +46,8 @@ export const homeView = (pubs) => {
   homeDiv.innerHTML = homeContent;
 
   const ulPost = homeDiv.querySelector('#post-list');
-  let index = 1;
   pubs.forEach((note) => {
-    console.log(`List of Notes: ${index}. ${note}`);
-    console.log(note);
-    index++;
     let ans = postList(note);
-    console.log(ans);
     ulPost.appendChild(ans);
   });
 
@@ -62,6 +57,12 @@ export const homeView = (pubs) => {
   const btnSharePost = homeDiv.querySelector('#share-post');
   btnSharePost.addEventListener('click', (event) => { savePost(event) });
 
+  const fileName = homeDiv.querySelector('#input-file-name');
+  const fileButton = homeDiv.querySelector('#fileButton');
+  fileButton.addEventListener('change', () => {
+    const fileValue = fileButton.files[0].name;
+    fileName.value = fileValue;
+  });
 
   const HambMenu = homeDiv.querySelector('#hamb-menu');
   const showHamb = homeDiv.querySelector('#show-hamb');

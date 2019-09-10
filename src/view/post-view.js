@@ -1,3 +1,4 @@
+import { userCurrent } from "../controller-firebase/firebase-authentication.js";
 
 export const postList = (note) => {
     const liElement = document.createElement('li');
@@ -8,17 +9,20 @@ export const postList = (note) => {
     <div class="only-flex">
       <div>
         <p> Publicado por: ${note.username} </p>
-        <select id="select-privacy" class="btn-select" name="select" disabled>
-          <option value="privado" selected>Privado</option>
-          <option value="público">Público</option>
+        <select id="select-privacy-${note.userID}" class="btn-select" name="select" disabled>
+        ${note.privacy === 'privado' ? `<option value="privado" selected>Privado</option>
+        <option value="publico">Público</option>` : `<option value="privado">Privado</option>
+        <option value="publico" selected>Público</option> `}
         </select>
       </div>
       <p class="date-publication">${note.timePost}</p>
     </div>
-    <span class="btn-delete"><i class="fas fa-trash-alt"></i></span>
+    ${userCurrent().id === note.userID ? `
+    <span class="btn-delete" id="delete-${note.userID}"><i class="fas fa-trash-alt"></i></span>` : 
+    `<span class="hide" id="delete-${note.userID}"><i class="fas fa-trash-alt"></i></span>`}
   </div>
   <div class="middle-post">
-    <div class="textarea no-border" id="text" contentEditable="false"></div>
+    <div class="textarea no-border" id="text-${note.userID}" contentEditable="false">${note.publication}</div>
   </div>
   <div class="botom-post">
     <div>

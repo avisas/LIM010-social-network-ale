@@ -26,9 +26,9 @@ export const deletePostFirebase = id => {
   firebase.firestore().collection('posts').doc(id).delete();
 };
 
-export const editPostFirebase = (id, note, selectedPrivacy) => {
+export const editPostFirebase = (id, post, selectedPrivacy) => {
 firebase.firestore().collection('posts').doc(id).update({
-  publication: note,
+  publication: post,
   privacy: selectedPrivacy,
   timePost: postDate(),
 });

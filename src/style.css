@@ -281,8 +281,86 @@ p{
   text-align: justify;
 }
 
+.img-post {
+  width: 40%;
+  height: 50%;
+  margin: 0% 2% 2% 2%;
+}
+
+.margin {
+  margin: 2%;
+}
+
+.botom-post {
+  display: flex;
+  background-color: #e4eefb;
+  border-color: #9da9cf;
+  border-style: solid;
+  border-width: 2px 0 2px 0;
+  justify-content: space-between;
+}
+
+.heart-empty {
+  color: red;
+  background: #fefefe;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.heart-full {
+  color: #fefefe;
+  background: #eb1717;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.counter-heart {
+  margin: 2px;
+}
+
 .no-border {
   border: none;
+}
+
+.margin-left {
+  margin-left: 5%;
+}
+
+.icon-save {
+  color: #080808;
+  background: #fefefe;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.icon-edit {
+  color:#080808;
+  background: #fefefe;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.form-comment {
+  align-items: center;
+  display: flex;
+}
+
+.textarea-comment {
+  resize: none;
+  border: 1.1px solid #a9a9a9;
+  padding: 7px 20px 7px 20px;
+  width: -webkit-fill-available;
+  margin: 2%;
+  border-radius: 5px;
+  outline: none;
+  text-align: justify;
+}
+
+.btn-comment {
+  color: #fefefe;
+  background: #e8d838;
+  padding: 10px;
+  border-radius: 50%;
 }
 
 .hide {

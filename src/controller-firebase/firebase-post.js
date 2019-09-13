@@ -41,7 +41,7 @@ export const getUserAndPublicPosts = (userId, callback) => {
     querySnapshot.forEach((doc) => 
     listOfPubs.push({ id: doc.id, ...doc.data() }));
     callback(listOfPubs.filter(pub => ((pub.privacy==='publico') || (pub.userID === userId))));
-});
+  })};
 
  // para cada elemento de sese list of pub ( publicacion) filtra con ciertas condiciones.
 export const uploadImage = (file) => {

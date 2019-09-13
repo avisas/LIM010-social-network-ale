@@ -6,15 +6,23 @@ export const changeView = (route) => {
   const container = document.getElementById('container');
   container.innerHTML = '';
   switch (route) {
-    case '': container.appendChild(components.loginUser());
+    case '':
+      container.innerHTML = '';
+      container.appendChild(components.loginUser());
       break;
-    case '#/': container.appendChild(components.loginUser());
+    case '#/':
+      container.innerHTML = '';
+      container.appendChild(components.loginUser());
       break;
-    case '#/register': container.appendChild(components.registerUser());
+    case '#/register':
+      container.innerHTML = '';
+      container.appendChild(components.registerUser());
       break;
     case '#/home':
+      console.log('Dentro del changeView')
       const userId = userCurrent().uid;
       getUserAndPublicPosts(userId, (dataListOfPubs) => {
+        container.innerHTML = '';
         container.appendChild(components.homeView(dataListOfPubs));
       });
       break;

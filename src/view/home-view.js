@@ -38,10 +38,8 @@ export const homeView = (pubs) => {
     </form>
   </div>
   <div class="content-post" id="content-post">
+  <ul id="post-list" class="ul-parent"></ul>
   </div>
-  <section>
-    <ul id="post-list" class="ul-parent"></ul>
-  </section>
 </main>
   `;
   homeDiv.innerHTML = homeContent;

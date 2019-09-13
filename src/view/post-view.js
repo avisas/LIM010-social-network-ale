@@ -1,5 +1,6 @@
 import { userCurrent } from "../controller-firebase/firebase-authentication.js";
 import { editPost } from "../controller/post-controller.js";
+import { deletePost, editPost, addLike, deleteLikePost, saveComment } from '../controller/post-controller.js';
 
 export const postList = (note) => {
   const liElement = document.createElement('li');
@@ -29,7 +30,7 @@ export const postList = (note) => {
   <div class="botom-post">
     <div>
       <i class="fa fa-heart-o heart-empty" id="like-${note.userID}" data-post="${note.userID}"></i>
-      <i class="fa fa-heart hide heart-full" aria-hidden="true" id="dislike${note.userID}" data-post="${note.userID}"></i>
+      <i class="fa fa-heart hide heart-full" aria-hidden="true" id="dislike-${note.userID}" data-post="${note.userID}"></i>
       <a id="counter-${note.userID}" class="counter-heart"></a>
     </div>
     <div>
@@ -54,21 +55,21 @@ export const postList = (note) => {
 </div>
     `;
 
-  liElemnt.querySelector(`delete-${note.userID}`)
+  liElement.querySelector(`#delete-${note.userID}`)
     .addEventListener('click', () => { deletePost(note.userID) });
 
-  liElemnt.querySelector(`#edit-${note.userID}`)
+  liElement.querySelector(`#edit-${note.userID}`)
     .addEventListener('click', () => { editPost(note.userID) });
 
-  liElemnt.querySelector(`#like-${note.userID}`)
+  liElement.querySelector(`#like-${note.userID}`)
     .addEventListener('click', () => { addLike(note.userID) });
 
-  liElemnt.querySelector(`#dislike-${note.userID}`)
+  liElement.querySelector(`#dislike-${note.userID}`)
     .addEventListener('click', () => { deleteLikePost(note.userID) });
 
-  liElemnt.querySelector(`#comment-${note.userID}`)
+  liElement.querySelector(`#btn-comment-${note.userID}`)
     .addEventListener('click', () => {
-      const contNote = liElemnt.querySelector(`#commentario-${note.userID}`);
+      const contNote = liElemnt.querySelector(`#post-comment-${note.userID}`);
       saveComment(objNote.id);
       contNote.value = '';
     });

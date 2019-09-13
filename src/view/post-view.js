@@ -1,6 +1,6 @@
 import { userCurrent } from "../controller-firebase/firebase-authentication.js";
 import { editPost } from "../controller/post-controller.js";
-import { deletePost, editPost, addLike, deleteLikePost, saveComment } from '../controller/post-controller.js';
+import { deletePost, deleteLikePost, saveComment } from '../controller/post-controller.js';
 
 export const postList = (note) => {
   const liElement = document.createElement('li');

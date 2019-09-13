@@ -1,6 +1,6 @@
 import { userCurrent } from '../controller-firebase/firebase-authentication.js';
 import { addPostFirebase, deletePostFirebase, editPostFirebase, uploadImage } from '../controller-firebase/firebase-post.js';
-
+import { homeView } from '../view/home-view.js';
 export const savePost = (event) => {
   event.preventDefault();
   const post = document.querySelector('#text-area-post').value;
@@ -143,8 +143,8 @@ export const deleteLikePost = (postId) => {
 
 export const allNotes = (content) => {
   const contentPost = content.querySelector('#content-post');
-  showPostFirebase((notes) => {
+  getUserAndPublicPosts((notes) => {
     contentPost.innerHTML = '';
-    contentPost.appendChild(home(notes));
+    contentPost.appendChild(homeView(notes));
   });
 };

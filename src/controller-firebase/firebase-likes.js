@@ -43,7 +43,7 @@ export const editCommentFirebase = (idPost, idComment, commentEdit) => {
 
 export const getAllComments = (idPost, callback) => {
   firebase.firestore().collection('posts').doc(idPost).collection('comment')
-    .orderBy('timePost', 'desc').onSnapshot((querySnapshot) => {
+    .orderBy('datePost', 'desc').onSnapshot((querySnapshot) => {
       const data = [];
       querySnapshot.forEach((doc) => {
         data.push({ id: doc.id, ...doc.data() });

@@ -1,6 +1,6 @@
 import { userCurrent } from "../controller-firebase/firebase-authentication.js";
-import { editPost } from "../controller/post-controller.js";
-import { deletePost, deleteLikePost, saveComment } from '../controller/post-controller.js';
+import { editPost, deletePost, addLikePost, deleteLikePost, saveComment, showLikePost } from "../controller/post-controller.js";
+import { } from '../controller/post-controller.js';
 
 export const postList = (note) => {
   const liElement = document.createElement('li');
@@ -35,7 +35,7 @@ export const postList = (note) => {
     </div>
     <div>
       <span id="show-comment"><i class="far fa-comment"></i></span>
-      <a id="commentsCount-${note.userID}" class="counter-heart"></a>
+      <a id="comments-counter-${note.userID}" class="counter-heart"></a>
     </div>
     ${userCurrent().uid === note.userID ? ` 
     <span class="margin-left hide" id="save-post-${note.userID}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i
@@ -50,7 +50,7 @@ export const postList = (note) => {
       <textarea placeholder="Escribe tu comentario" id="post-comment-${note.userID}" class="textarea-comment"></textarea>
       <span id="btn-comment-${note.userID}" data-post="${note.userID}" class="margin btn-comment"><i class="far fa-paper-plane"></i></span>
     </form>
-    <section id="allComments-${note.userID}"></section>
+    <section id="all-comments-${note.userID}"></section>
   </div>
 </div>
     `;
@@ -62,17 +62,39 @@ export const postList = (note) => {
     .addEventListener('click', () => { editPost(note.userID) });
 
   liElement.querySelector(`#like-${note.userID}`)
-    .addEventListener('click', () => { addLike(note.userID) });
+    .addEventListener('click', () => { addLikePost(note.userID) });
 
   liElement.querySelector(`#dislike-${note.userID}`)
     .addEventListener('click', () => { deleteLikePost(note.userID) });
 
   liElement.querySelector(`#btn-comment-${note.userID}`)
     .addEventListener('click', () => {
-      const contNote = liElemnt.querySelector(`#post-comment-${note.userID}`);
+      const postComment = liElemnt.querySelector(`#post-comment-${note.userID}`);
       saveComment(objNote.id);
-      contNote.value = '';
+      postComment.value = '';
     });
+
+  showLikePost(liElement, note.userID);
+
+  const allComents = liElement.querySelector(`#all-comments-${note.userID}`);
+  const showComment = liElement.querySelector('#show-comment');
+  const commentSection = liElement.querySelector('#comments-section');
+  const counterComment = liElement.querySelector(`#comments-counter-${note.userID}`);
+  showComment.addEventListener('click', () => {
+    if (commentSection.className === 'hide') {
+      commentSection.classList.remove('hide');
+    } else {
+      commentSection.classList.add('hide');
+    }
+  });
+
+  getAllComments(note.userID, (coments) => {
+    allComents.innerHTML = '';
+    coments.forEach((comment) => {
+      allComents.appendChild(listComment(comment));
+    });
+    counterComment.innerHTML = coments.length;
+  });
 
   return liElement;
 };

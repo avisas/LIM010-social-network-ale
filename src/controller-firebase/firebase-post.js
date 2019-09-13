@@ -35,7 +35,7 @@ firebase.firestore().collection('posts').doc(id).update({
 };
 
 export const getUserAndPublicPosts = (userId, callback) => {
-  firebase.firestore().collection('posts').where('privacy', '==', 'publico').where('userID', '==', userId).orderBy('timePost', 'desc')
+  firebase.firestore().collection('posts').orderBy('timePost', 'desc')
   .onSnapshot((querySnapshot) => {
     const listOfPubs = [];
     querySnapshot.forEach((doc) => 

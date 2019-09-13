@@ -19,7 +19,6 @@ export const changeView = (route) => {
       container.appendChild(components.registerUser());
       break;
     case '#/home':
-      console.log('Dentro del changeView')
       const userId = userCurrent().uid;
       getUserAndPublicPosts(userId, (dataListOfPubs) => {
         container.innerHTML = '';

@@ -38,11 +38,12 @@ export const getUserAndPublicPosts = (userId, callback) => {
   firebase.firestore().collection('posts').where('privacy', '==', 'publico').where('userID', '==', userId).orderBy('timePost', 'desc')
   .onSnapshot((querySnapshot) => {
     const listOfPubs = [];
-    querySnapshot.forEach((doc) => listOfPubs.push({ id: doc.id, ...doc.data() }));
-    callback(listOfPubs);
-  });
-};
+    querySnapshot.forEach((doc) => 
+    listOfPubs.push({ id: doc.id, ...doc.data() }));
+    callback(listOfPubs.filter(pub => ((pub.privacy==='publico') || (pub.userID === userId))));
+});
 
+ // para cada elemento de sese list of pub ( publicacion) filtra con ciertas condiciones.
 export const uploadImage = (file) => {
   const postImageRef = firebase.storage().ref().child(`images/${file.name}`);
   return postImageRef.put(file)

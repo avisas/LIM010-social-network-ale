@@ -12,8 +12,6 @@ export const savePost = (event) => {
   if (post !== '') {
     if (fileButton.files[0] === undefined) {
         addPostFirebase(post, privacySelected, userId, userName, '')
-        .then ( () => {
-        });
     } else {
       uploadImage(fileButton.files[0])
       .then(url => addPostFirebase(post, privacySelected, userId, userName, url)); 

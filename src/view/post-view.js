@@ -1,9 +1,10 @@
 import { userCurrent } from "../controller-firebase/firebase-authentication.js";
+import { editPost } from "../controller/post-controller.js";
 
 export const postList = (note) => {
-    const liElement = document.createElement('li');
-    liElement.classList.add('li-child');
-    liElement.innerHTML = `
+  const liElement = document.createElement('li');
+  liElement.classList.add('li-child');
+  liElement.innerHTML = `
     <div class="div-post">
   <div class="user-publicated flex-name-post">
     <div class="only-flex">
@@ -19,7 +20,7 @@ export const postList = (note) => {
     </div>
     ${userCurrent().uid === note.userID ? `
     <span class="btn-delete" id="delete-${note.userID}"><i class="fas fa-trash-alt"></i></span>` :
-    `<span class="hide" id="delete-${note.userID}"><i class="fas fa-trash-alt"></i></span>`}
+      `<span class="hide" id="delete-${note.userID}"><i class="fas fa-trash-alt"></i></span>`}
   </div>
   <div class="middle-post">
     <div class="textarea no-border" id="text-${note.userID}" contentEditable="false">${note.publication}</div>
@@ -39,9 +40,9 @@ export const postList = (note) => {
     <span class="margin-left hide" id="save-post-${note.userID}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i
         class="fa fa-floppy-o icon-save"></i></span>
     <span class="margin-left" id="edit-${note.userID}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i
-        class="fa fa-pencil-square-o icon-edit"></i></span>` : 
-        ` <span class="margin-left hide" id="save-post-${note.userID}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i class="fa fa-floppy-o icon-save"></i></span>
-        <span class="margin-left hide" id="edit-${note.userID}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i class="fa fa-pencil-square-o icon-edit"></i><span>` }
+        class="fa fa-pencil-square-o icon-edit"></i></span> ` : ` 
+        <span class="margin-left hide" id="save-post-${note.userID}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i class="fa fa-floppy-o icon-save"></i></span>
+        <span class="margin-left hide" id="edit-${note.userID}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i class="fa fa-pencil-square-o icon-edit"></i><span>`}
   </div>
   <div id="comments-section" class="hide">
     <form id="form-publication" maxlength=50 class="form-comment" required>
@@ -52,6 +53,25 @@ export const postList = (note) => {
   </div>
 </div>
     `;
-    
-    return liElement;
+
+  liElemnt.querySelector(`delete-${note.userID}`)
+    .addEventListener('click', () => { deletePost(note.userID) });
+
+  liElemnt.querySelector(`#edit-${note.userID}`)
+    .addEventListener('click', () => { editPost(note.userID) });
+
+  liElemnt.querySelector(`#like-${note.userID}`)
+    .addEventListener('click', () => { addLike(note.userID) });
+
+  liElemnt.querySelector(`#dislike-${note.userID}`)
+    .addEventListener('click', () => { deleteLikePost(note.userID) });
+
+  liElemnt.querySelector(`#comment-${note.userID}`)
+    .addEventListener('click', () => {
+      const contNote = liElemnt.querySelector(`#commentario-${note.userID}`);
+      saveComment(objNote.id);
+      contNote.value = '';
+    });
+
+  return liElement;
 };

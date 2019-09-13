@@ -1,5 +1,5 @@
 import { userCurrent } from '../controller-firebase/firebase-authentication.js';
-import { addPostFirebase, deletePostFirebase, editPostFirebase } from '../controller-firebase/firebase-post.js';
+import { addPostFirebase, deletePostFirebase, editPostFirebase, uploadImage } from '../controller-firebase/firebase-post.js';
 
 export const savePost = (event) => {
   event.preventDefault();
@@ -89,17 +89,64 @@ export const editComment = (idComment, idPost) => {
     event.preventDefault();
     textComment.style.backgroundColor = '#f2eeed';
     textComment.disabled = true;
-    //AQUI ME QUEDÉ //
     const note = textComment.value;
     editCommentFirebase(idPost, idComment, note)
       .then(() => {
-        boton.classList.add('hide');
-        botonEditar.classList.remove('hide');
+        btnSaveComment.classList.add('hide');
+        btnEditComment.classList.remove('hide');
       })
       .catch((error) => {
-        const modalTitle = 'Error Editar Comentario';
-        const modalContent = `Error adding document:${error}`;
-        modalMessage(modalTitle, modalContent);
+        alert('No se puede editar el comentario');
       });
+  });
+};
+
+export const showLikePost = (list, id) => {
+  const buttonLike = list.querySelector(`#like-${id}`);
+  const buttonDislike = list.querySelector(`#dislike-${id}`);
+  const user = userCurrent();
+  showLikeFirebase(id).onSnapshot((querySnapshot) => {
+      document.getElementById(`counter-${id}`).innerHTML = querySnapshot.size;
+      querySnapshot.forEach((doc) => {
+        if (doc.data().idUser !== user.uid || !doc.exists) {
+          buttonLike.classList.remove('hide');
+          buttonDislike.classList.add('hide');
+        } else {
+          buttonLike.classList.add('hide');
+          buttonDislike.classList.remove('hide');
+        }
+      });
+    });
+};
+
+export const addLikePost = (postId) => {
+  const buttonLike = document.getElementById(`like-${postId}`);
+  const buttonDislike = document.getElementById(`dislike-${postId}`);
+  const user = userCurrent();
+  const userUid = user.uid;
+  const userName = user.displayName;
+  addLikeFirebase(userUid, userName, postId)
+    .then(() => {
+      buttonDislike.classList.remove('hide');
+      buttonLike.classList.add('hide');
+    });
+};
+
+export const deleteLikePost = (postId) => {
+  const user = userCurrent().uid;
+  const buttonLike = document.getElementById(`like-${postId}`);
+  const buttonDislike = document.getElementById(`dislike-${postId}`);
+  deleteLikeFirebase(user, postId)
+    .then(() => {
+      buttonDislike.classList.add('hide');
+      buttonLike.classList.remove('hide');
+    });
+};
+
+export const allNotes = (content) => {
+  const contentPost = content.querySelector('#content-post');
+  showPostFirebase((notes) => {
+    contentPost.innerHTML = '';
+    contentPost.appendChild(home(notes));
   });
 };

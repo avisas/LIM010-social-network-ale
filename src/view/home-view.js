@@ -37,7 +37,8 @@ export const homeView = (pubs) => {
       </div>
     </form>
   </div>
-
+  <div class="content-post" id="content-post">
+  </div>
   <section>
     <ul id="post-list" class="ul-parent"></ul>
   </section>

@@ -74,7 +74,7 @@ export const postList = (note) => {
       postComment.value = '';
     });
 
-  showLikePost(liElement, note.userID);
+  // showLikePost(liElement, note.userID);
 
   const allComents = liElement.querySelector(`#all-comments-${note.userID}`);
   const showComment = liElement.querySelector('#show-comment');
@@ -88,13 +88,13 @@ export const postList = (note) => {
     }
   });
 
-  getAllComments(note.userID, (coments) => {
-    allComents.innerHTML = '';
-    coments.forEach((comment) => {
-      allComents.appendChild(listComment(comment));
-    });
-    counterComment.innerHTML = coments.length;
-  });
+  // getAllComments(note.userID, (coments) => {
+  //   allComents.innerHTML = '';
+  //   coments.forEach((comment) => {
+  //     allComents.appendChild(listComment(comment));
+  //   });
+  //   counterComment.innerHTML = coments.length;
+  // });
 
   return liElement;
 };

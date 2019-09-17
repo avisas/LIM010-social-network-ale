@@ -1,6 +1,8 @@
 import { userCurrent } from '../controller-firebase/firebase-authentication.js';
-import { addPostFirebase, deletePostFirebase, editPostFirebase, uploadImage } from '../controller-firebase/firebase-post.js';
+import { addPostFirebase, deletePostFirebase, editPostFirebase, uploadImage, getUserAndPublicPosts } from '../controller-firebase/firebase-post.js';
+import { addCommentFirebase, editCommentFirebase, showLikeFirebase, addLikeFirebase, deleteLikeFirebase } from '../controller-firebase/firebase-likes.js';
 import { homeView } from '../view/home-view.js';
+
 export const savePost = (event) => {
   event.preventDefault();
   const post = document.querySelector('#text-area-post').value;
@@ -29,7 +31,8 @@ export const saveComment = (postId) => {
   if (postComment !== '') {
     addCommentFirebase(userId, userName, postId, postComment)
       .then(() => {
-      }).catch((error) => {
+      })
+      .catch((error) => {
         alert('Error al intentar enviar un comentario a este post');
       });
   } else {
@@ -67,9 +70,7 @@ export const editPost = (id) => {
         editButton.classList.remove('hide');
       })
       .catch((error) => {
-        const modalTitle = 'Error Editar Publicación';
-        const modalContent = `Error adding document:${error}`;
-        modalMessage(modalTitle, modalContent);
+        alert('Error al intentar comentar esta publicación');
       });
   });
 };

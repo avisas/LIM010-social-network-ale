@@ -24,7 +24,7 @@ export const addCommentFirebase = (userUid, userName, postId, text) => {
     nameUser: userName,
     comment: text,
     idPost: postId,
-    timePost: datePost(),
+    timePost: postDate(),
   });
 };
 
@@ -37,7 +37,7 @@ export const editCommentFirebase = (idPost, idComment, commentEdit) => {
   firebase.firestore().collection('posts').doc(idPost).collection('comment')
   .doc(idComment).update({
     updateComment: commentEdit,
-    updateTimePost: datePost(),
+    updateTimePost: postDate(),
   });
 };
 

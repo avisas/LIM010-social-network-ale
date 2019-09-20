@@ -31,5 +31,9 @@
     "regenerator-runtime": "^0.13.1",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0"
+  },
+  "dependencies": {
+    "jest-mock": "^24.9.0",
+    "mock": "^0.1.1"
   }
 }

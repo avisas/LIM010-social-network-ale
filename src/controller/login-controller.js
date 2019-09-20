@@ -12,7 +12,7 @@ export const loginFunction = (event) => {
       messageErrorLabel.innerHTML = '';
       window.location.hash = '#/home';
       const user = userCurrent();
-      updateDisplayName(user.displayName); 
+      updateDisplayName(user.displayName);
     })
     .catch((error) => {
       messageErrorLabel.classList.add('show-message-error');
@@ -37,11 +37,14 @@ export const loginFunction = (event) => {
 
 export const signInGoogle = (event) => {
   event.preventDefault();
-  const user = userCurrent();
+  const messageErrorLabel = document.getElementById('LoginMessageError');
   signInWithGoogle()
     .then(() => {
-      window.location.hash = '#/home';
+      messageErrorLabel.classList.remove('show-message-error');
+      messageErrorLabel.innerHTML = '';
+      const user = userCurrent();
       createProfile(user.uid, user.displayName, user.email);
+      window.location.hash = '#/home';
       updateDisplayName(user.displayName);
     })
     .catch((error) => {
@@ -74,15 +77,21 @@ export const signInGoogle = (event) => {
         default: break;
       }
     });
-  };
+};
 
 export const signInFacebook = (event) => {
   event.preventDefault();
-  const user = userCurrent();
-  signInWithFacebook().then(() => {
-    window.location.hash = '#/home';
+  const messageErrorLabel = document.getElementById('LoginMessageError');
+  signInWithFacebook().then((result) => {
+    messageErrorLabel.classList.remove('show-message-error');
+    messageErrorLabel.innerHTML = '';
+    const user = userCurrent();
+    console.log(user);
     createProfile(user.uid, user.displayName, user.email);
+    window.location.hash = '#/home';
+    console.log('antes de llamar al updateDisplayName');
     updateDisplayName(user.displayName);
+    console.log('despues de llamar al updateDisplayName');
   }).catch((error) => {
     messageErrorLabel.classList.add('show-message-error');
     switch (error.code) {
@@ -125,6 +134,8 @@ export const showPassword = () => {
 };
 
 export const updateDisplayName = (newDisplayName) => {
+  console.log(`dentro de updateDisplayName. type:${typeof newDisplayName}. newDisplayName:${ newDisplayName }`);
+  console.log(newDisplayName);
   const user = userCurrent();
   if (!newDisplayName) {
     newDisplayName = user.displayName || user.email;

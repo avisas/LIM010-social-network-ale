@@ -10,7 +10,7 @@ export const profileView = () => {
   <nav class="flex">
     <a id="hamb-menu" class="hamb-menu"><span class="icon-menu"></span></a>
     <ul id="show-hamb" class="hide list-menu">
-      <li><a id="user-name"><span class="icon-user"></span>User</a></li>
+      <li><a id="user-name"><span class="icon-user"></span>${userCurrent().displayName}</a></li>
       <li><a id="home-pag"><span class="icon-home2"></span>Home</a></li>
       <li><a id="setting"><span class="icon-info"></span>Setting</a></li>
       <li><a id="sign-out"><span class="icon-exit"></span>Log Out</a></li>
@@ -31,6 +31,7 @@ export const profileView = () => {
       <input type="text" value="" class="inputForm" id="job">
       <label>cuéntales sobre ti</label>
       <textarea class="textarea-profile" id="description-textarea"></textarea>
+      
       <input type="submit" class="button-login" id="button-save" value="Guardar">
       <input type="submit" class="button-login" id="button-return" value="Regresar">
     </form>
@@ -39,7 +40,7 @@ export const profileView = () => {
   `;
   profile.innerHTML = profileContent;
 
-  const btnSignOut = homeDiv.querySelector('#sign-out');
+  const btnSignOut = profile.querySelector('#sign-out');
   btnSignOut.addEventListener('click', () => { signOutUser() });
 
   const name = profile.querySelector('#name');

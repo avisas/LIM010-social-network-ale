@@ -12,7 +12,7 @@ export const homeView = (pubs) => {
   <nav class="flex">
     <a id="hamb-menu" class="hamb-menu"><span class="icon-menu"></span></a>
     <ul id="show-hamb" class="hide list-menu">
-      <li><a id="user-name"><span class="icon-user"></span>User</a></li>
+      <li><a id="user-name"><span class="icon-user"></span>${userCurrent().displayName}</a></li>
       <li><a id="home-pag"><span class="icon-home2"></span>Home</a></li>
       <li><a id="setting"><span class="icon-info"></span>Setting</a></li>
       <li><a id="sign-out"><span class="icon-exit"></span>Log Out</a></li>
@@ -62,6 +62,11 @@ export const homeView = (pubs) => {
     const fileValue = fileButton.files[0].name;
     fileName.value = fileValue;
   });
+
+  const userName = homeDiv.querySelector('#user-name');
+  userName.addEventListener('click', () => { 
+    window.location.hash = '#/profile';
+   });
 
   const HambMenu = homeDiv.querySelector('#hamb-menu');
   const showHamb = homeDiv.querySelector('#show-hamb');

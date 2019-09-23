@@ -121,6 +121,26 @@ p{
   position: relative;
 }
 
+.input-form-profile {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 40%;
+  position: relative;
+}
+
+.textarea-profile {
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  width: 40%;
+  position: relative;
+}
+
 .eye-class{
   width: 20px;
   position: absolute;

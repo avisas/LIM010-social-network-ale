@@ -24,11 +24,11 @@ export const profileView = () => {
   ${userCurrent().photoURL !== null ? `<img class="img-user margin" src="${userCurrent().photoURL}">` : '<img class="img-avatar margin" src="https://icon-library.net/images/avatar-icon-png/avatar-icon-png-16.jpg">'}
   <form class="form-profile">
       <label>Nombre</label>
-      <input type="text" value="" class="inputForm" id="name">
+      <input type="text" value="" class="input-form-profile" id="name">
       <label>Email</label>
-      <input type="text" value="" disabled class="inputForm" id="email">
+      <input type="text" value="" disabled class="input-form-profile" id="email">
       <label>Ocupación</label>
-      <input type="text" value="" class="inputForm" id="job">
+      <input type="text" value="" class="input-form-profile" id="job">
       <label>cuéntales sobre ti</label>
       <textarea class="textarea-profile" id="description-textarea"></textarea>
       

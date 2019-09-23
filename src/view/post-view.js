@@ -1,6 +1,5 @@
-import { userCurrent } from "../controller-firebase/firebase-authentication.js";
-import { editPost, deletePost, addLikePost, deleteLikePost, saveComment, showLikePost } from "../controller/post-controller.js";
-import { } from '../controller/post-controller.js';
+import { userCurrent } from '../controller-firebase/firebase-authentication.js';
+import { editPost, deletePost, addLikePost, deleteLikePost, saveComment, showLikePost } from '../controller/post-controller.js';
 
 export const postList = (note) => {
   const liElement = document.createElement('li');
@@ -20,8 +19,8 @@ export const postList = (note) => {
       <p class="date-publication">${note.timePost}</p>
     </div>
     ${userCurrent().uid === note.userID ? `
-    <span class="btn-delete" id="delete-${note.userID}"><i class="fas fa-trash-alt"></i></span>` :
-      `<span class="hide" id="delete-${note.userID}"><i class="fas fa-trash-alt"></i></span>`}
+    <span class="btn-delete" id="delete-${note.userID}"><i class="fas fa-trash-alt"></i></span>
+    ` : `<span class="hide" id="delete-${note.userID}"><i class="fas fa-trash-alt"></i></span>`}
   </div>
   <div class="middle-post">
     <div class="textarea no-border" id="text-${note.userID}" contentEditable="false">${note.publication}</div>
@@ -56,21 +55,21 @@ export const postList = (note) => {
     `;
 
   liElement.querySelector(`#delete-${note.userID}`)
-    .addEventListener('click', () => { deletePost(note.userID) });
+    .addEventListener('click', () => { deletePost(note.userID); });
 
   liElement.querySelector(`#edit-${note.userID}`)
-    .addEventListener('click', () => { editPost(note.userID) });
+    .addEventListener('click', () => { editPost(note.userID); });
 
   liElement.querySelector(`#like-${note.userID}`)
-    .addEventListener('click', () => { addLikePost(note.userID) });
+    .addEventListener('click', () => { addLikePost(note.userID); });
 
   liElement.querySelector(`#dislike-${note.userID}`)
-    .addEventListener('click', () => { deleteLikePost(note.userID) });
+    .addEventListener('click', () => { deleteLikePost(note.userID); });
 
   liElement.querySelector(`#btn-comment-${note.userID}`)
     .addEventListener('click', () => {
-      const postComment = liElemnt.querySelector(`#post-comment-${note.userID}`);
-      saveComment(objNote.id);
+      const postComment = liElement.querySelector(`#post-comment-${note.userID}`);
+      saveComment(note.userID);
       postComment.value = '';
     });
 

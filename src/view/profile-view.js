@@ -33,7 +33,7 @@ export const profileView = () => {
       <textarea class="textarea-profile" id="description-textarea"></textarea>
       
       <input type="submit" class="button-login" id="button-save" value="Guardar">
-      <input type="submit" class="button-login" id="button-return" value="Regresar">
+      <input type="submit" class="button-back-profile" id="button-return" value="Regresar">
     </form>
   </div>
 </div>
@@ -41,7 +41,7 @@ export const profileView = () => {
   profile.innerHTML = profileContent;
 
   const btnSignOut = profile.querySelector('#sign-out');
-  btnSignOut.addEventListener('click', () => { signOutUser() });
+  btnSignOut.addEventListener('click', () => { signOutUser(); });
 
   const name = profile.querySelector('#name');
   const email = profile.querySelector('#email');

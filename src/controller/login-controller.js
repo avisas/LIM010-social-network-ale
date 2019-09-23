@@ -1,4 +1,6 @@
-import { signIn, signInWithGoogle, signInWithFacebook, userCurrent } from '../controller-firebase/firebase-authentication.js';
+import {
+  signIn, signInWithGoogle, signInWithFacebook, userCurrent,
+} from '../controller-firebase/firebase-authentication.js';
 import { createProfile } from './register-controller.js';
 
 export const loginFunction = (event) => {
@@ -86,7 +88,6 @@ export const signInFacebook = (event) => {
     messageErrorLabel.classList.remove('show-message-error');
     messageErrorLabel.innerHTML = '';
     const user = userCurrent();
-    console.log(user);
     createProfile(user.uid, user.displayName, user.email);
     window.location.hash = '#/home';
     // console.log('antes de llamar al updateDisplayName');
@@ -134,13 +135,13 @@ export const showPassword = () => {
 };
 
 export const updateDisplayName = (newDisplayName) => {
-  console.log(`dentro de updateDisplayName. type:${typeof newDisplayName}. newDisplayName:${ newDisplayName }`);
-  console.log(newDisplayName);
+  // console.log(`dentro de updateDisplayName. type:${typeof newDisplayName}. newDisplayName:${ newDisplayName }`);
+  // console.log(newDisplayName);
   const user = userCurrent();
   if (!newDisplayName) {
     newDisplayName = user.displayName || user.email;
   }
   user.updateProfile({
-    displayName: newDisplayName
+    displayName: newDisplayName,
   });
 };

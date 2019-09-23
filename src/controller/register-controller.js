@@ -1,6 +1,7 @@
-import { dataBase } from '../main.js';
 import { createUser, userCurrent } from '../controller-firebase/firebase-authentication.js';
 import { updateDisplayName } from './login-controller.js';
+
+const dataBase = firebase.firestore();
 
 export const createProfile = (id, nameUser, emailUser) => {
   dataBase.collection('users').doc(id).set({
@@ -10,10 +11,10 @@ export const createProfile = (id, nameUser, emailUser) => {
     description: '',
   })
     .then(() => {
-      console.log('usuario creado');
+      // console.log('usuario creado');
     })
     .catch((error) => {
-      console.log(error);
+      // console.log(error);
     });
 };
 

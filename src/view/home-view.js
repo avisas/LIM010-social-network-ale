@@ -1,7 +1,6 @@
 import { signOutUser } from '../controller/home-controller.js';
 import { savePost } from '../controller/post-controller.js';
 import { postList } from '../view/post-view.js';
-import { getUserAndPublicPosts } from '../controller-firebase/firebase-post.js';
 import { userCurrent } from '../controller-firebase/firebase-authentication.js';
 
 export const homeView = (pubs) => {
@@ -46,15 +45,15 @@ export const homeView = (pubs) => {
 
   const ulPost = homeDiv.querySelector('#post-list');
   pubs.forEach((note) => {
-    let ans = postList(note);
+    const ans = postList(note);
     ulPost.appendChild(ans);
   });
 
   const btnSignOut = homeDiv.querySelector('#sign-out');
-  btnSignOut.addEventListener('click', () => { signOutUser() });
+  btnSignOut.addEventListener('click', () => { signOutUser(); });
 
   const btnSharePost = homeDiv.querySelector('#share-post');
-  btnSharePost.addEventListener('click', (event) => { savePost(event) });
+  btnSharePost.addEventListener('click', (event) => { savePost(event); });
 
   const fileName = homeDiv.querySelector('#input-file-name');
   const fileButton = homeDiv.querySelector('#fileButton');
@@ -64,9 +63,9 @@ export const homeView = (pubs) => {
   });
 
   const userName = homeDiv.querySelector('#user-name');
-  userName.addEventListener('click', () => { 
+  userName.addEventListener('click', () => {
     window.location.hash = '#/profile';
-   });
+  });
 
   const HambMenu = homeDiv.querySelector('#hamb-menu');
   const showHamb = homeDiv.querySelector('#show-hamb');
@@ -84,5 +83,4 @@ export const homeView = (pubs) => {
     }
   });
   return homeDiv;
-
 };

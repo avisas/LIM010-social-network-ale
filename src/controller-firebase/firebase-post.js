@@ -22,28 +22,28 @@ export const addPostFirebase = (notePost, selectPrivacy, userUid, userDisplayNam
   });
 };
 
-export const deletePostFirebase = id => {
+export const deletePostFirebase = (id) => {
   firebase.firestore().collection('posts').doc(id).delete();
 };
 
 export const editPostFirebase = (id, post, selectedPrivacy) => {
-firebase.firestore().collection('posts').doc(id).update({
-  publication: post,
-  privacy: selectedPrivacy,
-  timePost: postDate(),
-});
+  firebase.firestore().collection('posts').doc(id).update({
+    publication: post,
+    privacy: selectedPrivacy,
+    timePost: postDate(),
+  });
 };
 
 export const getUserAndPublicPosts = (userId, callback) => {
   firebase.firestore().collection('posts').orderBy('timePost', 'desc')
-  .onSnapshot((querySnapshot) => {
-    const listOfPubs = [];
-    querySnapshot.forEach((doc) => 
-    listOfPubs.push({ id: doc.id, ...doc.data() }));
-    callback(listOfPubs.filter(pub => ((pub.privacy==='publico') || (pub.userID === userId))));
-  })};
+    .onSnapshot((querySnapshot) => {
+      const listOfPubs = [];
+      querySnapshot.forEach(doc => listOfPubs.push({ id: doc.id, ...doc.data() }));
+      callback(listOfPubs.filter(pub => ((pub.privacy === 'publico') || (pub.userID === userId))));
+    });
+};
 
- // para cada elemento de sese list of pub ( publicacion) filtra con ciertas condiciones.
+// para cada elemento de sese list of pub ( publicacion) filtra con ciertas condiciones.
 export const uploadImage = (file) => {
   const postImageRef = firebase.storage().ref().child(`images/${file.name}`);
   return postImageRef.put(file)

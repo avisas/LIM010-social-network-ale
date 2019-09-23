@@ -1,4 +1,9 @@
-import { loginFunction, signInGoogle, signInFacebook, showPassword } from '../controller/login-controller.js';
+import {
+  loginFunction,
+  signInGoogle,
+  signInFacebook,
+  showPassword,
+} from '../controller/login-controller';
 
 export const loginUser = () => {
   const formLogin = document.createElement('div');
@@ -38,9 +43,9 @@ export const loginUser = () => {
   const loginGoogle = formLogin.querySelector('#google');
   const showEye = formLogin.querySelector('#show-eye');
 
-  loginAuthentication.addEventListener('submit', (event) => { loginFunction(event) });
-  loginFacebook.addEventListener('click', (event) => { signInFacebook(event) });
-  loginGoogle.addEventListener('click', (event) => { signInGoogle(event) });
-  showEye.addEventListener('click', () => { showPassword() });
+  loginAuthentication.addEventListener('submit', (event) => { loginFunction(event); });
+  loginFacebook.addEventListener('click', (event) => { signInFacebook(event); });
+  loginGoogle.addEventListener('click', (event) => { signInGoogle(event); });
+  showEye.addEventListener('click', () => { showPassword(); });
   return formLogin;
 };

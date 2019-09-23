@@ -10,15 +10,13 @@ const firebaseConfig = {
   apiKey: "AIzaSyBSpzjm4pcwWNrGj01R4qBS1JWKiEGvf-M",
   authDomain: "social-network-da9bb.firebaseapp.com",
   databaseURL: "https://social-network-da9bb.firebaseio.com",
-  projectId: "social-network-da9bb",
-  storageBucket: "social-network-da9bb.appspot.com",
-  messagingSenderId: "127105401953",
-  appId: "1:127105401953:web:ee4714d5b170bbe4"
+  projectId: 'social-network-da9bb',
+  storageBucket: 'social-network-da9bb.appspot.com',
+  messagingSenderId: '127105401953',
+  appId: '1:127105401953:web:ee4714d5b170bbe4',
 };
 //  Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-export const dataBase = firebase.firestore();
 
 const init = () => {
   changeView(window.location.hash);

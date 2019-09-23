@@ -1,6 +1,10 @@
 import { userCurrent } from '../controller-firebase/firebase-authentication.js';
-import { addPostFirebase, deletePostFirebase, editPostFirebase, uploadImage, getUserAndPublicPosts } from '../controller-firebase/firebase-post.js';
-import { addCommentFirebase, editCommentFirebase, showLikeFirebase, addLikeFirebase, deleteLikeFirebase } from '../controller-firebase/firebase-likes.js';
+import {
+  addPostFirebase, deletePostFirebase, editPostFirebase, uploadImage, getUserAndPublicPosts,
+} from '../controller-firebase/firebase-post.js';
+import {
+  addCommentFirebase, editCommentFirebase, showLikeFirebase, addLikeFirebase, deleteLikeFirebase,
+} from '../controller-firebase/firebase-likes.js';
 import { homeView } from '../view/home-view.js';
 
 export const savePost = (event) => {
@@ -13,10 +17,10 @@ export const savePost = (event) => {
   const userName = user.displayName;
   if (post !== '') {
     if (fileButton.files[0] === undefined) {
-        addPostFirebase(post, privacySelected, userId, userName, '')
+      addPostFirebase(post, privacySelected, userId, userName, '');
     } else {
       uploadImage(fileButton.files[0])
-      .then(url => addPostFirebase(post, privacySelected, userId, userName, url)); 
+        .then(url => addPostFirebase(post, privacySelected, userId, userName, url));
     }
   } else {
     alert('Error al intentar publicar un post');
@@ -105,17 +109,17 @@ export const showLikePost = (list, id) => {
   const buttonDislike = list.querySelector(`#dislike-${id}`);
   const user = userCurrent();
   showLikeFirebase(id).onSnapshot((querySnapshot) => {
-      document.getElementById(`counter-${id}`).innerHTML = querySnapshot.size;
-      querySnapshot.forEach((doc) => {
-        if (doc.data().idUser !== user.uid || !doc.exists) {
-          buttonLike.classList.remove('hide');
-          buttonDislike.classList.add('hide');
-        } else {
-          buttonLike.classList.add('hide');
-          buttonDislike.classList.remove('hide');
-        }
-      });
+    document.getElementById(`counter-${id}`).innerHTML = querySnapshot.size;
+    querySnapshot.forEach((doc) => {
+      if (doc.data().idUser !== user.uid || !doc.exists) {
+        buttonLike.classList.remove('hide');
+        buttonDislike.classList.add('hide');
+      } else {
+        buttonLike.classList.add('hide');
+        buttonDislike.classList.remove('hide');
+      }
     });
+  });
 };
 
 export const addLikePost = (postId) => {

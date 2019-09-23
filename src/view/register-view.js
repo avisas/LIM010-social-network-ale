@@ -22,7 +22,7 @@ export const registerUser = () => {
   formRegister.innerHTML = registerContent;
 
   const btnRegister = formRegister.querySelector('#button-register');
-  btnRegister.addEventListener('click', (event) => { registerFunction(event) });
+  btnRegister.addEventListener('click', (event) => { registerFunction(event); });
 
   return formRegister;
 };

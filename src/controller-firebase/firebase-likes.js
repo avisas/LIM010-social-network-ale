@@ -16,28 +16,32 @@ export const deleteLikeFirebase = (user, postId) => {
     .delete();
 };
 
-export const showLikeFirebase = (idPost) => {
-  return firebase.firestore().collection('posts').doc(idPost).collection('likes').onSnapshot(querySnapshot);
+export const showLikeFirebase = (idPost) => { 
+  return firebase.firestore().collection('posts').doc(idPost).collection('likes')
+    .onSnapshot(querySnapshot);
 }; // AQUI FALTA COMPLETAR COMO LA FUNCIÓN GETALLCOMMENTS()
 
 export const addCommentFirebase = (userUid, userName, postId, text) => {
-  firebase.firestore().collection('posts').doc(postId).collection('comment').add({
-    idUser: userUid,
-    nameUser: userName,
-    comment: text,
-    idPost: postId,
-    timePost: postDate(),
-  });
+  firebase.firestore().collection('posts').doc(postId).collection('comment')
+    .add({
+      idUser: userUid,
+      nameUser: userName,
+      comment: text,
+      idPost: postId,
+      timePost: postDate(),
+    });
 };
 
 export const deleteCommentFirebase = (idPost, idComment) => {
   firebase.firestore().collection('posts').doc(idPost).collection('comment')
-    .doc(idComment).delete();
+    .doc(idComment)
+    .delete();
 };
 
 export const editCommentFirebase = (idPost, idComment, commentEdit) => {
   firebase.firestore().collection('posts').doc(idPost).collection('comment')
-    .doc(idComment).update({
+    .doc(idComment)
+    .update({
       updateComment: commentEdit,
       updateTimePost: postDate(),
     });
@@ -45,7 +49,8 @@ export const editCommentFirebase = (idPost, idComment, commentEdit) => {
 
 export const getAllComments = (idPost, callback) => {
   firebase.firestore().collection('posts').doc(idPost).collection('comment')
-    .orderBy('datePost', 'desc').onSnapshot((querySnapshot) => {
+    .orderBy('datePost', 'desc')
+    .onSnapshot((querySnapshot) => {
       const data = [];
       querySnapshot.forEach((doc) => {
         data.push({ id: doc.id, ...doc.data() });

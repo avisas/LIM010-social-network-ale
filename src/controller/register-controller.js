@@ -1,5 +1,5 @@
 import { createUser, userCurrent } from '../controller-firebase/firebase-authentication.js';
-import { updateDisplayName } from '../common/controller-functions.js';
+import { updateDisplayName } from '../view/common-view.js';
 
 export const createProfile = (id, nameUser, emailUser) => {
   firebase.firestore().collection('users').doc(id).set({
@@ -18,15 +18,16 @@ export const createProfile = (id, nameUser, emailUser) => {
 
 export const getName = (userName) => {
   const user = userCurrent().uid;
-  firebase.firestore().collection('users').doc(user).get().then((doc) => {
-    if (doc.exists) {
-      // console.log('Document data:', doc.data().name);
-      userName.textContent = doc.data().name;
-    } else {
-      // doc.data() will be undefined in this case
-      // console.log('No such document!');
-    }
-  })
+  firebase.firestore().collection('users').doc(user).get()
+    .then((doc) => {
+      if (doc.exists) {
+        // console.log('Document data:', doc.data().name);
+        userName.textContent = doc.data().name;
+      } else {
+        // doc.data() will be undefined in this case
+        // console.log('No such document!');
+      }
+    })
     .catch(() => {
       // console.log('Error getting document:', error);
     });

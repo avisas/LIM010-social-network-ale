@@ -1,5 +1,5 @@
 import { signOutUser } from '../controller/home-controller.js';
-import { savePost } from '../controller/post-controller.js';
+import { savePost } from '../controller/common-controller.js';
 import { postList } from '../view/post-view.js';
 import { userCurrent } from '../controller-firebase/firebase-authentication.js';
 

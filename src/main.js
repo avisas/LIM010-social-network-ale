@@ -3,13 +3,13 @@
 
 // loginUser();
 
-import { changeView } from '../src/controller-route/route.js';
+import { changeView } from './controller-route/route.js';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBSpzjm4pcwWNrGj01R4qBS1JWKiEGvf-M",
-  authDomain: "social-network-da9bb.firebaseapp.com",
-  databaseURL: "https://social-network-da9bb.firebaseio.com",
+  apiKey: 'AIzaSyBSpzjm4pcwWNrGj01R4qBS1JWKiEGvf-M',
+  authDomain: 'social-network-da9bb.firebaseapp.com',
+  databaseURL: 'https://social-network-da9bb.firebaseio.com',
   projectId: 'social-network-da9bb',
   storageBucket: 'social-network-da9bb.appspot.com',
   messagingSenderId: '127105401953',

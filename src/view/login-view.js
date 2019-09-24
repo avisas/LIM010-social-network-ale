@@ -3,7 +3,7 @@ import {
   signInGoogle,
   signInFacebook,
   showPassword,
-} from '../controller/login-controller';
+} from '../controller/login-controller.js';
 
 export const loginUser = () => {
   const formLogin = document.createElement('div');

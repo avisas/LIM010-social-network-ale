@@ -1,5 +1,5 @@
 import { createUser, userCurrent } from '../controller-firebase/firebase-authentication.js';
-import { updateDisplayName } from './login-controller.js';
+import { updateDisplayName } from '../common/controller-functions.js';
 
 export const createProfile = (id, nameUser, emailUser) => {
   firebase.firestore().collection('users').doc(id).set({
@@ -15,6 +15,7 @@ export const createProfile = (id, nameUser, emailUser) => {
       // console.log(error);
     });
 };
+
 export const getName = (userName) => {
   const user = userCurrent().uid;
   firebase.firestore().collection('users').doc(user).get().then((doc) => {

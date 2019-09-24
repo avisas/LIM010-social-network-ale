@@ -133,15 +133,3 @@ export const showPassword = () => {
     tipo.type = 'password';
   }
 };
-
-export const updateDisplayName = (newDisplayName) => {
-  // console.log(`dentro de updateDisplayName. type:${typeof newDisplayName}. newDisplayName:${ newDisplayName }`);
-  // console.log(newDisplayName);
-  const user = userCurrent();
-  if (!newDisplayName) {
-    newDisplayName = user.displayName || user.email;
-  }
-  user.updateProfile({
-    displayName: newDisplayName,
-  });
-};

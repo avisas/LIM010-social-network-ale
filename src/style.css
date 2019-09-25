@@ -122,25 +122,35 @@ p{
 }
 
 .input-form-profile {
+  font-family: 'Gayathri', sans-serif;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 20px;
-  width: 40%;
+  width: 60%;
   position: relative;
+  font-size: 15px;
 }
 
 .textarea-profile {
+  font-family: 'Gayathri', sans-serif;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin-top: 8px;
+  margin-bottom: 20px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 20px;
-  width: 40%;
+  width: 60%;
   position: relative;
+  font-size: 15px;
 }
 
+.label-profile {
+  font-family: 'Gayathri', sans-serif;
+  font-size: 20px;
+  margin: 3px;
+}
 .eye-class{
   width: 20px;
   position: absolute;
@@ -387,12 +397,20 @@ p{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 20px;
-};
+  text-align-last: center;
+}
 
-.button-save-profile {
-
-
+.button-profile {
+  background-color: #de5f5f;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 50%;
+  font-size: 18px;
+  outline: none;
 }
 
 .hide {
@@ -439,6 +457,13 @@ header nav ul li {
 
 .list-menu {
   display: flex !important;
+}
+
+.flex-form-profile {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: -webkit-fill-available;
 }
 
 .flex-form {

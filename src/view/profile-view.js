@@ -23,17 +23,17 @@ export const profileView = () => {
   <div class="flex-form-profile margin">
   ${userCurrent().photoURL !== null ? `<img class="img-user margin" src="${userCurrent().photoURL}">` : '<img class="img-avatar margin" src="https://icon-library.net/images/avatar-icon-png/avatar-icon-png-16.jpg">'}
   <form class="form-profile">
-      <label>Nombre</label>
+      <label class ="label-profile">Name</label>
       <input type="text" value="" class="input-form-profile" id="name">
-      <label>Email</label>
+      <label class ="label-profile">Email</label>
       <input type="text" value="" disabled class="input-form-profile" id="email">
-      <label>Ocupación</label>
+      <label class ="label-profile">Occupation</label>
       <input type="text" value="" class="input-form-profile" id="job">
-      <label>cuéntales sobre ti</label>
+      <label class ="label-profile">About me</label>
       <textarea class="textarea-profile" id="description-textarea"></textarea>
       
-      <input type="submit" class="button-login" id="button-save" value="Guardar">
-      <input type="submit" class="button-back-profile" id="button-return" value="Regresar">
+      <input type="submit" class="button-profile" id="button-save" value="Save">
+      <input type="submit" class="button-profile" id="button-return" value="Return">
     </form>
   </div>
 </div>

@@ -2,17 +2,20 @@ import { createUser, userCurrent } from '../controller-firebase/firebase-authent
 import { updateDisplayName } from '../view/common-view.js';
 
 export const createProfile = (id, nameUser, emailUser) => {
-  firebase.firestore().collection('users').doc(id).set({
-    name: nameUser,
-    email: emailUser,
-    job: '',
-    description: '',
-  })
-    .then(() => {
-      // console.log('usuario creado');
+  firebase.firestore().collection('users').doc(id).get()
+    .then((doc) => {
+      if (!doc.exists) {
+        firebase.firestore().collection('users').doc(id).set({
+          name: nameUser,
+          email: emailUser,
+          job: '',
+          description: '',
+        });
+      }
     })
-    .catch((error) => {
-      // console.log(error);
+    .then(() => {
+    })
+    .catch(() => {
     });
 };
 
@@ -21,15 +24,12 @@ export const getName = (userName) => {
   firebase.firestore().collection('users').doc(user).get()
     .then((doc) => {
       if (doc.exists) {
-        // console.log('Document data:', doc.data().name);
         userName.textContent = doc.data().name;
       } else {
-        // doc.data() will be undefined in this case
-        // console.log('No such document!');
+        userName.textContent = '';
       }
     })
     .catch(() => {
-      // console.log('Error getting document:', error);
     });
 };
 
@@ -48,7 +48,6 @@ export const registerFunction = (event) => {
       regMessageErrorLabel.innerHTML = '';
       window.location.hash = '#/';
       updateDisplayName(user.displayName);
-      // alert('Usuario creado correctamente');
     })
     .catch((error) => {
       regMessageErrorLabel.classList.add('show-message-error');

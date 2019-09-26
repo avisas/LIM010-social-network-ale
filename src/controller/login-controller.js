@@ -13,8 +13,6 @@ export const loginFunction = (event) => {
       messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
       window.location.hash = '#/home';
-      // const user = userCurrent();
-      // updateDisplayName(user.displayName);
     })
     .catch((error) => {
       messageErrorLabel.classList.add('show-message-error');
@@ -47,7 +45,6 @@ export const signInGoogle = (event) => {
       const user = userCurrent();
       createProfile(user.uid, user.displayName, user.email);
       window.location.hash = '#/home';
-      // updateDisplayName(user.displayName);
     })
     .catch((error) => {
       messageErrorLabel.classList.add('show-message-error');
@@ -90,9 +87,6 @@ export const signInFacebook = (event) => {
     const user = userCurrent();
     createProfile(user.uid, user.displayName, user.email);
     window.location.hash = '#/home';
-    // console.log('antes de llamar al updateDisplayName');
-    // updateDisplayName(user.displayName);
-    // console.log('despues de llamar al updateDisplayName');
   }).catch((error) => {
     messageErrorLabel.classList.add('show-message-error');
     switch (error.code) {

@@ -5,37 +5,46 @@ import {
 import {
   addCommentFirebase, editCommentFirebase, showLikeFirebase, addLikeFirebase, deleteLikeFirebase,
 } from '../controller-firebase/firebase-likes.js';
-import { homeView } from '../view/home-view.js';
+// import { homeView } from '../view/home-view.js';
 
 export const saveComment = (postId) => {
-  const postComment = document.querySelector(`#comment-${postId}`).value;
+  const commentMessageLabel = document.getElementById('commentMessage');
+  const postComment = document.querySelector(`#post-comment-${postId}`).value;
   const user = userCurrent();
   const userId = user.uid;
   const userName = user.displayName;
   if (postComment !== '') {
     addCommentFirebase(userId, userName, postId, postComment)
       .then(() => {
+        commentMessageLabel.classList.remove('show-message-error');
+        commentMessageLabel.innerHTML = '';
       })
-      .catch((error) => {
-        alert('Error al intentar enviar un comentario a este post');
+      .catch(() => {
+        commentMessageLabel.classList.add('show-message-error');
+        commentMessageLabel.innerHTML = 'Cannot add a comment at this moment';
       });
   } else {
-    alert('Ingrese un comentario');
+    commentMessageLabel.classList.add('show-message-error');
+    commentMessageLabel.innerHTML = 'You should add a comment';
   }
 };
 
 export const deletePost = (id) => {
+  const deleteMessageLabel = document.getElementById('deleteMessage');
   deletePostFirebase(id)
     .then(() => {
+      deleteMessageLabel.classList.remove('show-message-error');
+      deleteMessageLabel.innerHTML = '';
     })
-    .catch((error) => {
-      alert('El post no se puede eliminar en estos momentos');
+    .catch(() => {
+      deleteMessageLabel.classList.add('show-message-error');
+      deleteMessageLabel.innerHTML = 'Cannot delete a post in this moment';
     });
 };
 
 export const editPost = (id) => {
   const textPost = document.querySelector(`#text-${id}`);
-  const selectPrivacy = document.querySelector(`#selectPriv-${id}`);
+  const selectPrivacy = document.querySelector(`#select-privacy-${id}`);
   const editButton = document.querySelector(`#edit-${id}`);
   const saveButton = document.querySelector(`#save-post-${id}`);
 
@@ -126,10 +135,10 @@ export const deleteLikePost = (postId) => {
     });
 };
 
-export const allNotes = (content) => {
-  const contentPost = content.querySelector('#content-post');
-  getUserAndPublicPosts((notes) => {
-    contentPost.innerHTML = '';
-    contentPost.appendChild(homeView(notes));
-  });
-};
+// export const allNotes = (content) => {
+//   const contentPost = content.querySelector('#content-post');
+//   getUserAndPublicPosts((notes) => {
+//     contentPost.innerHTML = '';
+//     contentPost.appendChild(homeView(notes));
+//   });
+// };

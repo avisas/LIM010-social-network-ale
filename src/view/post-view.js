@@ -33,7 +33,7 @@ export const postList = (note) => {
       <a id="counter-${note.userID}" class="counter-heart"></a>
     </div>
     <div>
-      <span id="show-comment"><i class="far fa-comment"></i></span>
+      <span id="icon-comment"><i class="far fa-comment"></i></span>
       <a id="comments-counter-${note.userID}" class="counter-heart"></a>
     </div>
     ${userCurrent().uid === note.userID ? ` 
@@ -46,9 +46,12 @@ export const postList = (note) => {
   </div>
   <div id="comments-section" class="hide">
     <form id="form-publication" maxlength=50 class="form-comment" required>
-      <textarea placeholder="Escribe tu comentario" id="post-comment-${note.userID}" class="textarea-comment"></textarea>
-      <span id="btn-comment-${note.userID}" data-post="${note.userID}" class="margin btn-comment"><i class="far fa-paper-plane"></i></span>
-    </form>
+      <textarea placeholder="Write your comment here" id="post-comment-${note.userID}" class="textarea-comment"></textarea>
+      <span id="btn-comment-${note.userID}" data-post="${note.userID}" class="margin btn-comment"><i class="far fa-paper-plane"></i></span>   
+      </form>
+      <label id="commentMessage"></label>
+      <label id="deleteMessage"></label> 
+      <label id="editMessage"></label>
     <section id="all-comments-${note.userID}"></section>
   </div>
 </div>
@@ -67,19 +70,23 @@ export const postList = (note) => {
     .addEventListener('click', () => { deleteLikePost(note.userID); });
 
   liElement.querySelector(`#btn-comment-${note.userID}`)
-    .addEventListener('click', () => {
-      const postComment = liElement.querySelector(`#post-comment-${note.userID}`);
-      saveComment(note.userID);
-      postComment.value = '';
+    .addEventListener('click', (postID) => {
+      const comment = liElement.querySelector(`#post-comment-${note.userID}`);
+      saveComment(postID);
+      comment.value = '';
     });
 
   // showLikePost(liElement, note.userID);
 
   const allComents = liElement.querySelector(`#all-comments-${note.userID}`);
-  const showComment = liElement.querySelector('#show-comment');
+  const iconComment = liElement.querySelector('#icon-comment');
   const commentSection = liElement.querySelector('#comments-section');
   const counterComment = liElement.querySelector(`#comments-counter-${note.userID}`);
-  showComment.addEventListener('click', () => {
+
+  // const iconDeletePost = liElement.querySelector(`#delete-${note.userID}`);
+  // iconDeletePost.addEventListener('click', (id) => { deletePost(id); });
+
+  iconComment.addEventListener('click', () => {
     if (commentSection.className === 'hide') {
       commentSection.classList.remove('hide');
     } else {

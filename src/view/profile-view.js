@@ -19,7 +19,7 @@ export const profileView = () => {
   </header>
   
   <div class="div-main-profile">
-  <h2 class="margin">Profile</h2>
+  <h2 class="margin h2-profile">Profile</h2>
   <div class="flex-form-profile margin">
   ${userCurrent().photoURL !== null ? `<img class="img-user margin" src="${userCurrent().photoURL}">` : '<img class="img-avatar margin" src="https://icon-library.net/images/avatar-icon-png/avatar-icon-png-16.jpg">'}
   <form class="form-profile">
@@ -56,9 +56,8 @@ export const profileView = () => {
     const newEmail = email.value;
     const newJob = job.value;
     const newDescription = descriptionText.value;
-
     updateProfile(newName, newEmail, newJob, newDescription).then(() => {
-      window.location.hash = '#/profile';
+      window.location.hash = '#/home';
     });
   });
 

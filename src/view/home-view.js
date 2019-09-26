@@ -21,7 +21,7 @@ export const homeView = (pubs) => {
 <main>
   <div id="form-save" class="div-post">
     <form id="form-publication" class="" maxlength=50 required>
-      <textarea id="text-area-post" placeholder="¿Que quieres compartir?" class="textarea-post"></textarea>
+      <textarea id="text-area-post" placeholder="¿What do you want to share?" class="textarea-post"></textarea>
       <div class="flex-bottom-form">
         <div>
           <label for="fileButton" id="image" class="btn-picture"><i class="far fa-images"></i></label>
@@ -35,6 +35,7 @@ export const homeView = (pubs) => {
         <input type="button" id="share-post" class="btn-share" value="Compartir">
       </div>
     </form>
+    <label id="shareMessage"></label>
   </div>
   <div class="content-post" id="content-post">
   <ul id="post-list" class="ul-parent"></ul>

@@ -203,6 +203,7 @@ p{
   display: inline-block;
   color: #db4a39;
   font-weight: bold;
+  border: ridge;
   font-style: oblique;
   font-size: 18px;
   padding: 8px;
@@ -368,6 +369,10 @@ p{
   background: #fefefe;
   padding: 10px;
   border-radius: 50%;
+}
+
+.h2-profile{
+  font-family: 'Source Serif Pro', serif;
 }
 
 .form-comment {

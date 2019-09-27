@@ -7,7 +7,6 @@ import {
 } from '../controller-firebase/firebase-likes.js';
 // import { homeView } from '../view/home-view.js';
 
-
 export const saveComment = (postId) => {
   const commentMessageLabel = document.getElementById('commentMessage');
   const postComment = document.querySelector(`#post-comment-${postId}`).value;

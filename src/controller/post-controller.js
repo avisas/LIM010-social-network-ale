@@ -55,15 +55,19 @@ export const editPost = (id) => {
   editButton.classList.add('hide');
   saveButton.addEventListener('click', (event) => {
     event.preventDefault();
+    const editMessageLabel = document.getElementById('editMessage');
     const printPost = textPost.innerHTML;
     const selectedPrivacy = selectPrivacy.value;
     editPostFirebase(id, printPost, selectedPrivacy)
       .then(() => {
         saveButton.classList.add('hide');
         editButton.classList.remove('hide');
+        editMessageLabel.classList.remove('show-message-error');
+        editMessageLabel.innerHTML = '';
       })
-      .catch((error) => {
-        alert('Error al intentar comentar esta publicación');
+      .catch(() => {
+        editMessageLabel.classList.add('show-message-error');
+        editMessageLabel.innerHTML = 'Cannot edit this post in this moment';
       });
   });
 };
@@ -87,7 +91,7 @@ export const editComment = (idComment, idPost) => {
         btnSaveComment.classList.add('hide');
         btnEditComment.classList.remove('hide');
       })
-      .catch((error) => {
+      .catch(() => {
         alert('No se puede editar el comentario');
       });
   });

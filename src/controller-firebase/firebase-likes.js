@@ -16,10 +16,10 @@ export const deleteLikeFirebase = (user, postId) => {
     .delete();
 };
 
-export const showLikeFirebase = (idPost) => { 
-  return firebase.firestore().collection('posts').doc(idPost).collection('likes')
-    .onSnapshot(querySnapshot);
-}; // AQUI FALTA COMPLETAR COMO LA FUNCIÓN GETALLCOMMENTS()
+// export const showLikeFirebase = (idPost) => { 
+//   return firebase.firestore().collection('posts').doc(idPost).collection('likes')
+//     .onSnapshot(querySnapshot);
+// }; // AQUI FALTA COMPLETAR COMO LA FUNCIÓN GETALLCOMMENTS()
 
 export const addCommentFirebase = (userUid, userName, postId, text) => {
   firebase.firestore().collection('posts').doc(postId).collection('comment')

@@ -1,5 +1,7 @@
 // importamos la funcion que vamos a testear
-import { createUser, signIn, userCurrent, signInWithFacebook, signInWithGoogle, signOutLogin } from '../src/controller-firebase/firebase-authentication.js';
+import {
+  createUser, signIn, userCurrent, signInWithFacebook, signInWithGoogle, signOutLogin,
+} from '../src/controller-firebase/firebase-authentication.js';
 
 const firebasemock = require('firebase-mock');
 

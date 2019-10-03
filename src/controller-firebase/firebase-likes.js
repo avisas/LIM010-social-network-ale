@@ -4,9 +4,9 @@ export const addLikeFirebase = (userId, userName, postId) => {
   firebase.firestore().collection('posts').doc(postId).collection('likes')
     .doc(userId)
     .set({
-      userId: userId,
-      userName: userName,
-      postId: postId,
+      userId,
+      userName,
+      postId,
     });
 };
 
@@ -16,7 +16,7 @@ export const deleteLikeFirebase = (user, postId) => {
     .delete();
 };
 
-// export const showLikeFirebase = (idPost) => { 
+// export const showLikeFirebase = (idPost) => {
 //   return firebase.firestore().collection('posts').doc(idPost).collection('likes')
 //     .onSnapshot(querySnapshot);
 // }; // AQUI FALTA COMPLETAR COMO LA FUNCIÓN GETALLCOMMENTS()

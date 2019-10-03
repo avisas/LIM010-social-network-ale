@@ -6,13 +6,10 @@ export const updateUserName = (user, newName) => user.updateProfile({
 }).catch(() => {
 });
 
-export const getUserData = (name, email, job, descriptionText) => {
+export const getUserData = (callbackfunction) => {
   const user = userCurrent();
   firebase.firestore().collection('users').doc(user.uid).onSnapshot((doc) => {
-    name.value = doc.data().name;
-    email.value = doc.data().email;
-    job.value = doc.data().job;
-    descriptionText.value = doc.data().description;
+    callbackfunction(doc);
   });
 };
 

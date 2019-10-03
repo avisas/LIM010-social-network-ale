@@ -48,7 +48,13 @@ export const profileView = () => {
   const job = profile.querySelector('#job');
   const descriptionText = profile.querySelector('#description-textarea');
 
-  getUserData(name, email, job, descriptionText);
+  getUserData((objData) => {
+    name.value = objData.data().name;
+    email.value = objData.data().email;
+    job.value = objData.data().job;
+    descriptionText.value = objData.data().description;
+  });
+
   const save = profile.querySelector('#button-save');
   save.addEventListener('click', (event) => {
     event.preventDefault();

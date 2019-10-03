@@ -22,8 +22,8 @@ global.firebase = firebasemock.MockFirebaseSdk(
 
 describe('crear un usuario', () => {
   it('debería crear un usuario con email ale@gmail.com y con password hola123', () => createUser('ale@gmail.com', 'hola123')
-    .then(() => {
-      expect(userCurrent().email).toBe('ale@gmail.com');
+    .then((user) => {
+      expect(user.email).toBe('ale@gmail.com');
     }));
 });
 
@@ -58,6 +58,6 @@ describe('Ingresar con Google', () => {
 describe('Cerrar sesión', () => {
   it('Debería poder cerrar sesión', () => signOutLogin()
     .then(() => {
-      expect(userCurrent()).toBe(undefined);
+      expect(userCurrent()).toBe(null);
     }));
 });

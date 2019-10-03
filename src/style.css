@@ -22,7 +22,7 @@ header {
   align-items: center;
   padding: 10px 10%;
   background-color: #E8443F;
-  font-family: "Ubuntu";
+  /* font-family: "Ubuntu"; */
 }
 
 main{
@@ -217,7 +217,7 @@ p{
   border: 2px solid #9e7862;
   border-radius: 5px;
   margin: auto;
-  font-family: "Ubuntu";
+  /* font-family: "Ubuntu"; */
 }
 
 .textarea-post {

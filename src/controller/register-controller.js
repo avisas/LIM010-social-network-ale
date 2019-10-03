@@ -19,19 +19,19 @@ export const createProfile = (id, nameUser, emailUser) => {
     });
 };
 
-export const getName = (userName) => {
-  const user = userCurrent().uid;
-  firebase.firestore().collection('users').doc(user).get()
-    .then((doc) => {
-      if (doc.exists) {
-        userName.textContent = doc.data().name;
-      } else {
-        userName.textContent = '';
-      }
-    })
-    .catch(() => {
-    });
-};
+// export const getName = (callbackFucntion) => {
+//   const user = userCurrent().uid;
+//   firebase.firestore().collection('users').doc(user).get()
+//     .then((doc) => {
+//       if (doc.exists) {
+//         callbackFucntion(doc.data().name);
+//       } else {
+//         callbackFucntion('');
+//       }
+//     })
+//     .catch(() => {
+//     });
+// };
 
 export const registerFunction = (event) => {
   event.preventDefault();
@@ -43,7 +43,9 @@ export const registerFunction = (event) => {
     .then(() => {
       const user = userCurrent();
       createProfile(user.uid, nick, email);
-      getName(user.uid);
+      // getName(() => {
+
+      // });
       regMessageErrorLabel.classList.remove('show-message-error');
       regMessageErrorLabel.innerHTML = '';
       window.location.hash = '#/';

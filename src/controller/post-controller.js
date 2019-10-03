@@ -1,9 +1,9 @@
 import { userCurrent } from '../controller-firebase/firebase-authentication.js';
 import {
-  deletePostFirebase, editPostFirebase, getUserAndPublicPosts,
+  deletePostFirebase, editPostFirebase,
 } from '../controller-firebase/firebase-post.js';
 import {
-  addCommentFirebase, editCommentFirebase, showLikeFirebase, addLikeFirebase, deleteLikeFirebase,
+  addCommentFirebase, editCommentFirebase, addLikeFirebase, deleteLikeFirebase,
 } from '../controller-firebase/firebase-likes.js';
 // import { homeView } from '../view/home-view.js';
 
@@ -92,28 +92,27 @@ export const editComment = (idComment, idPost) => {
         btnEditComment.classList.remove('hide');
       })
       .catch(() => {
-        alert('No se puede editar el comentario');
       });
   });
 };
 
-export const showLikePost = (list, id) => {
-  const buttonLike = list.querySelector(`#like-${id}`);
-  const buttonDislike = list.querySelector(`#dislike-${id}`);
-  const user = userCurrent();
-  showLikeFirebase(id).onSnapshot((querySnapshot) => {
-    document.getElementById(`counter-${id}`).innerHTML = querySnapshot.size;
-    querySnapshot.forEach((doc) => {
-      if (doc.data().idUser !== user.uid || !doc.exists) {
-        buttonLike.classList.remove('hide');
-        buttonDislike.classList.add('hide');
-      } else {
-        buttonLike.classList.add('hide');
-        buttonDislike.classList.remove('hide');
-      }
-    });
-  });
-};
+// export const showLikePost = (list, id) => {
+//   const buttonLike = list.querySelector(`#like-${id}`);
+//   const buttonDislike = list.querySelector(`#dislike-${id}`);
+//   const user = userCurrent();
+//   showLikeFirebase(id).onSnapshot((querySnapshot) => {
+//     document.getElementById(`counter-${id}`).innerHTML = querySnapshot.size;
+//     querySnapshot.forEach((doc) => {
+//       if (doc.data().idUser !== user.uid || !doc.exists) {
+//         buttonLike.classList.remove('hide');
+//         buttonDislike.classList.add('hide');
+//       } else {
+//         buttonLike.classList.add('hide');
+//         buttonDislike.classList.remove('hide');
+//       }
+//     });
+//   });
+// };
 
 export const addLikePost = (postId) => {
   const buttonLike = document.getElementById(`like-${postId}`);

@@ -84,10 +84,10 @@ export const postList = (note) => {
 
   // showLikePost(liElement, note.userID);
 
-  const allComents = liElement.querySelector(`#all-comments-${note.userID}`);
+  // const allComents = liElement.querySelector(`#all-comments-${note.userID}`);
   const iconComment = liElement.querySelector('#icon-comment');
   const commentSection = liElement.querySelector('#comments-section');
-  const counterComment = liElement.querySelector(`#comments-counter-${note.userID}`);
+  // const counterComment = liElement.querySelector(`#comments-counter-${note.userID}`);
 
   // const iconDeletePost = liElement.querySelector(`#delete-${note.userID}`);
   // iconDeletePost.addEventListener('click', (id) => { deletePost(id); });

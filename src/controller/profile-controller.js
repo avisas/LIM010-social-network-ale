@@ -6,10 +6,10 @@ export const updateUserName = (user, newName) => user.updateProfile({
 }).catch(() => {
 });
 
-export const getUserData = (callbackfunction) => {
+export const getUserData = (fxAllUserData) => {
   const user = userCurrent();
   firebase.firestore().collection('users').doc(user.uid).onSnapshot((doc) => {
-    callbackfunction(doc);
+    fxAllUserData(doc);
   });
 };
 

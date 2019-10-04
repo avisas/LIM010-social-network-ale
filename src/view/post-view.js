@@ -76,9 +76,9 @@ export const postList = (note) => {
     .addEventListener('click', () => { deleteLikePost(note.id); });
 
   liElement.querySelector(`#btn-comment-${note.id}`)
-    .addEventListener('click', (postID) => {
+    .addEventListener('click', () => {
       const comment = liElement.querySelector(`#post-comment-${note.id}`);
-      saveComment(postID);
+      saveComment(note.id);
       comment.value = '';
     });
 

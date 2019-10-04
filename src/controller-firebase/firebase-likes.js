@@ -21,7 +21,7 @@ export const deleteLikeFirebase = (user, postId) => {
 //     .onSnapshot(querySnapshot);
 // }; // AQUI FALTA COMPLETAR COMO LA FUNCIÓN GETALLCOMMENTS()
 
-export const addCommentFirebase = (userUid, userName, postId, text) => {
+export const addCommentFirebase = (userUid, userName, postId, text) => (
   firebase.firestore().collection('posts').doc(postId).collection('comment')
     .add({
       idUser: userUid,
@@ -29,8 +29,8 @@ export const addCommentFirebase = (userUid, userName, postId, text) => {
       comment: text,
       idPost: postId,
       timePost: postDate(),
-    });
-};
+    })
+);
 
 export const deleteCommentFirebase = (idPost, idComment) => {
   firebase.firestore().collection('posts').doc(idPost).collection('comment')

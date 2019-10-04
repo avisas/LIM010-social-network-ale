@@ -25,6 +25,9 @@ header {
   /* font-family: "Ubuntu"; */
 }
 
+.padding {
+  padding: 2%;
+}
 main{
   padding:20px;
 }

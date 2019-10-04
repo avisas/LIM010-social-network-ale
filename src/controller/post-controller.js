@@ -30,8 +30,6 @@ export const saveComment = (postId) => {
 };
 
 export const deletePost = (id) => {
-  console.log('Entro a deletePost');
-  console.log(id);
   const deleteMessageLabel = document.getElementById('deleteMessage');
   deletePostFirebase(id, (resultMessage) => {
     if (resultMessage === 'Success') {

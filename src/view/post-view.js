@@ -13,7 +13,7 @@ export const postList = (note) => {
   liElement.classList.add('li-child');
   liElement.innerHTML = `
     <div class="div-post">
-  <div class="user-publicated flex-name-post">
+  <div class="user-publicated padding flex-name-post">
     <div class="only-flex">
       <div>
         <p> Publicado por: ${note.username} </p>
@@ -30,14 +30,14 @@ export const postList = (note) => {
     ` : `<span class="hide" id="delete-${note.id}"><i class="fas fa-trash-alt"></i></span>`}
   </div>
   <div class="middle-post">
-    <div class="textarea no-border" id="text-${note.id}" contentEditable="false">${note.publication}</div>
+    <div class="textarea no-border padding" id="text-${note.id}" contentEditable="false">${note.publication}</div>
     ${note.img !== '' ? `<img class="img-post margin" src="${note.img}">` : ''}
   </div>
-  <div class="botom-post">
+  <div class="botom-post padding">
     <div>
-      <i class="fa fa-heart-o heart-empty" id="like-${note.userID}" data-post="${note.userID}"></i>
-      <i class="fa fa-heart hide heart-full" aria-hidden="true" id="dislike-${note.userID}" data-post="${note.userID}"></i>
-      <a id="counter-${note.userID}" class="counter-heart"></a>
+      <i class="fa fa-heart-o heart-empty hide" id="like-${note.id}" data-post="${note.id}"></i>
+      <i class="fa fa-heart hide heart-full" aria-hidden="true" id="dislike-${note.id}" data-post="${note.id}"></i>
+      <a id="counter-${note.id}" class="counter-heart"></a>
     </div>
     <div>
       <span id="icon-comment"><i class="far fa-comment"></i></span>
@@ -59,7 +59,7 @@ export const postList = (note) => {
       <label id="commentMessage"></label>
       <label id="deleteMessage"></label> 
       <label id="editMessage"></label>
-    <section id="all-comments-${note.userID}"></section>
+    <section id="all-comments-${note.id}"></section>
   </div>
 </div>
     `;
@@ -70,11 +70,11 @@ export const postList = (note) => {
   liElement.querySelector(`#edit-${note.id}`)
     .addEventListener('click', () => { editPost(note.id); });
 
-  liElement.querySelector(`#like-${note.userID}`)
-    .addEventListener('click', () => { addLikePost(note.userID); });
+  liElement.querySelector(`#like-${note.id}`)
+    .addEventListener('click', () => { addLikePost(note.id); });
 
-  liElement.querySelector(`#dislike-${note.userID}`)
-    .addEventListener('click', () => { deleteLikePost(note.userID); });
+  liElement.querySelector(`#dislike-${note.id}`)
+    .addEventListener('click', () => { deleteLikePost(note.id); });
 
   liElement.querySelector(`#btn-comment-${note.id}`)
     .addEventListener('click', (postID) => {

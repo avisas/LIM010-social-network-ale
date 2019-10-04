@@ -8,7 +8,6 @@ import {
 } from '../controller/post-controller.js';
 
 export const postList = (note) => {
-  console.log(note);
   const liElement = document.createElement('li');
   liElement.classList.add('li-child');
   liElement.innerHTML = `

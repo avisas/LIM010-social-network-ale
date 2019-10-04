@@ -22,8 +22,17 @@ export const addPostFirebase = (notePost, selectPrivacy, userUid, userDisplayNam
   });
 };
 
-export const deletePostFirebase = (id) => {
-  firebase.firestore().collection('posts').doc(id).delete();
+export const deletePostFirebase = (id, cbDelete) => {
+  console.log('Entro a deletePostFirebase');
+  firebase.firestore().collection('posts').doc(id).delete()
+    .then(() => {
+      console.log('dentro del then');
+      cbDelete('Success');
+    })
+    .catch(() => {
+      console.log('dentro del catch');
+      cbDelete('duh');
+    });
 };
 
 export const editPostFirebase = (id, post, selectedPrivacy) => {

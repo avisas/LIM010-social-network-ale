@@ -30,16 +30,18 @@ export const saveComment = (postId) => {
 };
 
 export const deletePost = (id) => {
+  console.log('Entro a deletePost');
+  console.log(id);
   const deleteMessageLabel = document.getElementById('deleteMessage');
-  deletePostFirebase(id)
-    .then(() => {
+  deletePostFirebase(id, (resultMessage) => {
+    if (resultMessage === 'Success') {
       deleteMessageLabel.classList.remove('show-message-error');
       deleteMessageLabel.innerHTML = '';
-    })
-    .catch(() => {
+    } else {
       deleteMessageLabel.classList.add('show-message-error');
       deleteMessageLabel.innerHTML = 'Cannot delete a post in this moment';
-    });
+    }
+  });
 };
 
 export const editPost = (id) => {

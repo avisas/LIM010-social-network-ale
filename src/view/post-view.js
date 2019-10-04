@@ -8,6 +8,7 @@ import {
 } from '../controller/post-controller.js';
 
 export const postList = (note) => {
+  console.log(note);
   const liElement = document.createElement('li');
   liElement.classList.add('li-child');
   liElement.innerHTML = `
@@ -16,7 +17,7 @@ export const postList = (note) => {
     <div class="only-flex">
       <div>
         <p> Publicado por: ${note.username} </p>
-        <select id="select-privacy-${note.userID}" class="btn-select" name="select" disabled>
+        <select id="select-privacy-${note.id}" class="btn-select" name="select" disabled>
           ${note.privacy === 'privado' ? `<option value="privado" selected>Privado</option>
           <option value="publico">Público</option>` : `<option value="privado">Privado</option>
           <option value="publico" selected>Público</option> `}
@@ -25,11 +26,11 @@ export const postList = (note) => {
       <p class="date-publication">${note.timePost}</p>
     </div>
     ${userCurrent().uid === note.userID ? `
-    <span class="btn-delete" id="delete-${note.userID}"><i class="fas fa-trash-alt"></i></span>
-    ` : `<span class="hide" id="delete-${note.userID}"><i class="fas fa-trash-alt"></i></span>`}
+    <span class="btn-delete" id="delete-${note.id}"><i class="fas fa-trash-alt"></i></span>
+    ` : `<span class="hide" id="delete-${note.id}"><i class="fas fa-trash-alt"></i></span>`}
   </div>
   <div class="middle-post">
-    <div class="textarea no-border" id="text-${note.userID}" contentEditable="false">${note.publication}</div>
+    <div class="textarea no-border" id="text-${note.id}" contentEditable="false">${note.publication}</div>
     ${note.img !== '' ? `<img class="img-post margin" src="${note.img}">` : ''}
   </div>
   <div class="botom-post">
@@ -40,20 +41,20 @@ export const postList = (note) => {
     </div>
     <div>
       <span id="icon-comment"><i class="far fa-comment"></i></span>
-      <a id="comments-counter-${note.userID}" class="counter-heart"></a>
+      <a id="comments-counter-${note.id}" class="counter-heart"></a>
     </div>
     ${userCurrent().uid === note.userID ? ` 
-    <span class="margin-left hide" id="save-post-${note.userID}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i
+    <span class="margin-left hide" id="save-post-${note.id}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i
         class="fa fa-floppy-o icon-save"></i></span>
-    <span class="margin-left" id="edit-${note.userID}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i
+    <span class="margin-left" id="edit-${note.id}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i
         class="fa fa-pencil-square-o icon-edit"></i></span> ` : ` 
-        <span class="margin-left hide" id="save-post-${note.userID}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i class="fa fa-floppy-o icon-save"></i></span>
-        <span class="margin-left hide" id="edit-${note.userID}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i class="fa fa-pencil-square-o icon-edit"></i><span>`}
+        <span class="margin-left hide" id="save-post-${note.id}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i class="fa fa-floppy-o icon-save"></i></span>
+        <span class="margin-left hide" id="edit-${note.id}" data-note="${note.publication}" data-privacidad="${note.privacy}"><i class="fa fa-pencil-square-o icon-edit"></i><span>`}
   </div>
   <div id="comments-section" class="hide">
     <form id="form-publication" maxlength=50 class="form-comment" required>
-      <textarea placeholder="Write your comment here" id="post-comment-${note.userID}" class="textarea-comment"></textarea>
-      <span id="btn-comment-${note.userID}" data-post="${note.userID}" class="margin btn-comment"><i class="far fa-paper-plane"></i></span>   
+      <textarea placeholder="Write your comment here" id="post-comment-${note.id}" class="textarea-comment"></textarea>
+      <span id="btn-comment-${note.id}" data-post="${note.id}" class="margin btn-comment"><i class="far fa-paper-plane"></i></span>   
       </form>
       <label id="commentMessage"></label>
       <label id="deleteMessage"></label> 
@@ -63,11 +64,11 @@ export const postList = (note) => {
 </div>
     `;
 
-  liElement.querySelector(`#delete-${note.userID}`)
-    .addEventListener('click', () => { deletePost(note.userID); });
+  liElement.querySelector(`#delete-${note.id}`)
+    .addEventListener('click', () => { deletePost(note.id); });
 
-  liElement.querySelector(`#edit-${note.userID}`)
-    .addEventListener('click', () => { editPost(note.userID); });
+  liElement.querySelector(`#edit-${note.id}`)
+    .addEventListener('click', () => { editPost(note.id); });
 
   liElement.querySelector(`#like-${note.userID}`)
     .addEventListener('click', () => { addLikePost(note.userID); });
@@ -75,9 +76,9 @@ export const postList = (note) => {
   liElement.querySelector(`#dislike-${note.userID}`)
     .addEventListener('click', () => { deleteLikePost(note.userID); });
 
-  liElement.querySelector(`#btn-comment-${note.userID}`)
+  liElement.querySelector(`#btn-comment-${note.id}`)
     .addEventListener('click', (postID) => {
-      const comment = liElement.querySelector(`#post-comment-${note.userID}`);
+      const comment = liElement.querySelector(`#post-comment-${note.id}`);
       saveComment(postID);
       comment.value = '';
     });

@@ -66,6 +66,6 @@ describe('Edit post', () => {
       expect(result.publication).toBe('post editado');
       done();
     };
-    getUserAndPublicPosts('002', callback);
+    getUserAndPublicPosts('user02', callback);
   }));
 });

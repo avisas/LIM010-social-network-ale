@@ -3,40 +3,45 @@ import {
   addPostFirebase, deletePostFirebase, editPostFirebase, getUserAndPublicPosts,
 } from '../src/controller-firebase/firebase-post.js';
 
-const fixtureData = {
-  __collection__: {
-    notes: {
-      __doc__: {
-        user01: {
-          userName: 'Alejandra',
-          user: '1',
-          timePost: '4 de septiembre de 2019 - 10:15 a. m.',
-          privacy: 'publico',
-          publication: 'prueba uno',
-          img: '',
-        },
-        user02: {
-          userName: 'Almendra',
-          user: '2',
-          timePost: '4 de septiembre de 2019 - 10:15 a. m.',
-          privacy: 'publico',
-          publication: 'prueba dos',
-          img: '',
-        },
-        user03: {
-          userName: 'Paola',
-          user: '3',
-          timePost: '4 de septiembre de 2019 - 10:15 a. m.',
-          privacy: 'privado',
-          publication: 'prueba tres',
-          img: '',
+const confMock = () => {
+  const fixtureData = {
+    __collection__: {
+      posts: {
+        __doc__: {
+          user01: {
+            userName: 'Alejandra',
+            user: '1',
+            timePost: '4 de septiembre de 2019 - 10:15 a. m.',
+            privacy: 'publico',
+            publication: 'prueba uno',
+            img: '',
+          },
+          user02: {
+            userName: 'Almendra',
+            user: '2',
+            timePost: '4 de septiembre de 2019 - 10:15 a. m.',
+            privacy: 'publico',
+            publication: 'prueba dos',
+            img: '',
+          },
+          user03: {
+            userName: 'Paola',
+            user: '3',
+            timePost: '4 de septiembre de 2019 - 10:15 a. m.',
+            privacy: 'privado',
+            publication: 'prueba tres',
+            img: '',
+          },
         },
       },
     },
-  },
+  };
+
+  global.firebase = new Mockfirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
 };
 
-global.firebase = new Mockfirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
+beforeEach(confMock);
+
 describe('Add post', () => {
   it('Debería poder agregar un post', done => addPostFirebase('primer post prueba', 'publico', '001', 'Sandra', '').then(() => {
     const callback = (publication) => {

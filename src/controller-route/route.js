@@ -5,7 +5,7 @@ import { getUserAndPublicPosts } from '../controller-firebase/firebase-post.js';
 export const changeView = (route) => {
   const container = document.getElementById('container');
   container.innerHTML = '';
-  let userId = null;
+
   switch (route) {
     case '':
       container.innerHTML = '';
@@ -19,13 +19,26 @@ export const changeView = (route) => {
       container.innerHTML = '';
       container.appendChild(components.registerUser());
       break;
-    case '#/home':
-      userId = userCurrent().uid;
-      getUserAndPublicPosts(userId, (dataListOfPubs) => {
-        container.innerHTML = '';
-        container.appendChild(components.homeView(dataListOfPubs));
-      });
+    case '#/home': {
+      const pintarHomeConUserId = (userId) => {
+        getUserAndPublicPosts(userId, (dataListOfPubs) => {
+          container.innerHTML = '';
+          container.appendChild(components.homeView(dataListOfPubs));
+        });
+      };
+
+      const user = userCurrent();
+      if (user) {
+        pintarHomeConUserId(user.uid);
+      } else {
+        firebase.auth().onAuthStateChanged((u) => {
+          if (u) {
+            pintarHomeConUserId(u.uid);
+          }
+        });
+      }
       break;
+    }
     case '#/profile': container.appendChild(components.profileView());
       break;
     default: break;

@@ -60,7 +60,7 @@ describe('Delete post', () => {
       expect(result).toBe(undefined);
       done();
     };
-    getUserAndPublicPosts('002', callback);
+    getUserAndPublicPosts('2', callback);
   }));
 });
 

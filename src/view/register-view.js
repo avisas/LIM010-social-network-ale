@@ -13,7 +13,7 @@ export const registerUser = () => {
     <input type="text" name="nickname" placeholder="User" class="inputForm" id="nick">
     <input type="text" name="mail" placeholder="Email" class="inputForm" id="mail">
     <input type="password" name="pass" placeholder="Password" class="inputForm" id="pass">
-    <input type="submit" class="button-login" id="button-register" value="Register">
+    <input type="submit" class="button-login" name="register" value="Register">
     <label id="registerMessageError"></label>
   </form>
   <p>¿Already have an account?&nbsp;<a href="#/"><span id="" class="register-href">Ingresa</span></a></p>
@@ -21,7 +21,7 @@ export const registerUser = () => {
     `;
   formRegister.innerHTML = registerContent;
 
-  const btnRegister = formRegister.querySelector('#button-register');
+  const btnRegister = formRegister.register;
   btnRegister.addEventListener('click', (event) => { registerFunction(event); });
 
   return formRegister;

@@ -51,10 +51,10 @@ export const homeView = (pubs) => {
   });
 
   const btnSignOut = homeDiv.querySelector('#sign-out');
-  btnSignOut.addEventListener('click', () => { signOutUser(); });
+  btnSignOut.addEventListener('click', signOutUser);
 
   const btnSharePost = homeDiv.querySelector('#share-post');
-  btnSharePost.addEventListener('click', (event) => { savePost(event); });
+  btnSharePost.addEventListener('click', savePost);
 
   const fileName = homeDiv.querySelector('#input-file-name');
   const fileButton = homeDiv.querySelector('#fileButton');

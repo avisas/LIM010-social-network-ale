@@ -11,7 +11,7 @@ export const postDate = () => {
   return dataTime;
 };
 
-export const addPostFirebase = (notePost, selectPrivacy, userUid, userDisplayName, imgUrl) => {
+export const addPostFirebase = (notePost, selectPrivacy, userUid, userDisplayName, imgUrl) => (
   firebase.firestore().collection('posts').add({
     publication: notePost,
     privacy: selectPrivacy,
@@ -19,8 +19,8 @@ export const addPostFirebase = (notePost, selectPrivacy, userUid, userDisplayNam
     username: userDisplayName,
     timePost: postDate(),
     img: imgUrl,
-  });
-};
+  })
+);
 
 export const deletePostFirebase = id => (
   firebase.firestore().collection('posts').doc(id).delete()
@@ -34,14 +34,14 @@ export const editPostFirebase = (id, post, selectedPrivacy) => (
   })
 );
 
-export const getUserAndPublicPosts = (userId, callback) => {
+export const getUserAndPublicPosts = (userId, callback) => (
   firebase.firestore().collection('posts').orderBy('timePost', 'desc')
     .onSnapshot((querySnapshot) => {
       const listOfPubs = [];
       querySnapshot.forEach(doc => listOfPubs.push({ id: doc.id, ...doc.data() }));
       callback(listOfPubs.filter(pub => ((pub.privacy === 'publico') || (pub.userID === userId))));
-    });
-};
+    })
+);
 
 // para cada elemento de sese list of pub ( publicacion) filtra con ciertas condiciones.
 export const uploadImage = (file) => {

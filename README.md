@@ -60,7 +60,7 @@ A continuación te proporcionamos el layout (diseño) de la vista mobile y deskt
 
 * Vista Desktop
 
-    ![desktop](https://user-images.githubusercontent.com/32286663/56174626-fcb74080-5fb8-11e9-8854-26e8d9c4e25f.png)
+    ![login-social-network](https://user-images.githubusercontent.com/50127415/68603988-7348ed80-0477-11ea-9f8e-78f28cca7a56.png)
 
 #### JavaScript (ES6+)
 
